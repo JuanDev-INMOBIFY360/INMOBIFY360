@@ -1,0 +1,11 @@
+import { getAllRolesController,getRoleByIdController,createRoleController,updateRoleController,deleteRoleController } from "./roles.controller.js";
+import { Router } from "express";
+
+const router = Router();
+
+router.get("/", getAllRolesController);
+router.get("/:id", getRoleByIdController);
+router.post("/", createRoleController);
+router.put("/:id", updateRoleController);
+router.delete("/:id", deleteRoleController);
+export default router;

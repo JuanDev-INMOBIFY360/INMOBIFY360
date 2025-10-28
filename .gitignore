@@ -1,0 +1,82 @@
+# ====================================
+# Node.js / Backend
+# ====================================
+
+# Dependencias
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# Builds y distribuciones
+dist/
+build/
+out/
+coverage/
+.tmp/
+temp/
+
+# Logs
+logs
+*.log
+*.log.*
+*.pid
+*.seed
+*.pid.lock
+debug.log
+error.log
+
+# ====================================
+# Prisma
+# ====================================
+
+# Archivos generados automáticamente
+prisma/dev.db
+prisma/dev.db-journal
+prisma/*.sqlite
+prisma/migrations/
+!prisma/schema.prisma
+
+# ====================================
+# Docker
+# ====================================
+
+# Archivos de contenedor
+.docker/
+docker-compose.override.yml
+docker-data/
+*.tar
+
+# ====================================
+# VSCode / IDEs
+# ====================================
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+
+# ====================================
+# Tests
+# ====================================
+
+coverage/
+jest-html-reporters-*.html
+
+
+# Archivos temporales del sistema
+.DS_Store
+*.tmp
+*.bak
+*.old

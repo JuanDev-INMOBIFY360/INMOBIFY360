@@ -1,0 +1,152 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+enum PrivilegeAction {
+    CREATE
+    READ
+    UPDATE
+    DELETE
+    CHANGE_STATE
+}
+
+enum PropertyState {
+    AVAILABLE
+    SOLD
+    RENTED
+}
+
+model Country {
+    id          Int          @id @default(autoincrement())
+    name        String       @unique
+    departments Department[]
+    properties  Property[]
+    createdAt   DateTime     @default(now())
+    updatedAt   DateTime     @updatedAt
+}
+
+model Department {
+    id         Int        @id @default(autoincrement())
+    name       String
+    country    Country    @relation(fields: [countryId], references: [id])
+    countryId  Int
+    cities     City[]
+    properties Property[]
+    createdAt  DateTime   @default(now())
+    updatedAt  DateTime   @updatedAt
+}
+
+model City {
+    id            Int            @id @default(autoincrement())
+    name          String
+    
+    department    Department     @relation(fields: [departmentId], references: [id])
+    departmentId  Int
+    neighborhoods Neighborhood[]
+    properties    Property[]
+    createdAt     DateTime       @default(now())
+    updatedAt     DateTime       @updatedAt
+}
+
+model Neighborhood {
+    id         Int        @id @default(autoincrement())
+    name       String
+    city       City       @relation(fields: [cityId], references: [id])
+    cityId     Int
+    properties Property[]
+    createdAt  DateTime   @default(now())
+    updatedAt  DateTime   @updatedAt
+}
+
+model Roles {
+    id          Int           @id @default(autoincrement())
+    name        String        @unique
+    users       User[]
+    permissions Permissions[]
+    createdAt   DateTime      @default(now())
+    updatedAt   DateTime      @updatedAt
+}
+
+model User {
+    id        Int      @id @default(autoincrement())
+    email     String   @unique
+    password  String
+    name      String
+    role      Roles?   @relation(fields: [roleId], references: [id])
+    roleId    Int?
+    status    Boolean  @default(true)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Permissions {
+    id         Int          @id @default(autoincrement())
+    name       String       @unique
+    role       Roles        @relation(fields: [roleId], references: [id])
+    roleId     Int
+    privileges Privileges[]
+    createdAt  DateTime     @default(now())
+    updatedAt  DateTime     @updatedAt
+}
+
+model Privileges {
+    id           Int             @id @default(autoincrement())
+    action       PrivilegeAction
+    permission   Permissions     @relation(fields: [permissionId], references: [id])
+    permissionId Int
+    createdAt    DateTime        @default(now())
+    updatedAt    DateTime        @updatedAt
+}
+
+model TypeProperty {
+    id         Int        @id @default(autoincrement())
+    name       String     @unique
+    properties Property[]
+    createdAt  DateTime   @default(now())
+    updatedAt  DateTime   @updatedAt
+}
+
+model Property {
+    id             Int           @id @default(autoincrement())
+    precio         Float
+    area           Float?
+    habitaciones   Int?
+    banos          Int?
+    parqueaderos   Int?
+    direccion      String
+    latitud        Float?
+    longitud       Float?
+    imagenes       Json?
+    estado         PropertyState @default(AVAILABLE)
+    owner          Owner         @relation(fields: [ownerId], references: [id])
+    ownerId        Int
+    country        Country       @relation(fields: [countryId], references: [id])
+    countryId      Int
+    department     Department    @relation(fields: [departmentId], references: [id])
+    departmentId   Int
+    city           City          @relation(fields: [cityId], references: [id])
+    cityId         Int
+    neighborhood   Neighborhood  @relation(fields: [neighborhoodId], references: [id])
+    neighborhoodId Int
+    typeProperty   TypeProperty  @relation(fields: [typePropertyId], references: [id])
+    typePropertyId Int
+    createdAt      DateTime      @default(now())
+    updatedAt      DateTime      @updatedAt
+}
+
+model Owner {
+    id         Int        @id @default(autoincrement())
+    name       String
+    email      String     @unique
+    phone      String?
+    document   String?    @unique
+    properties Property[]
+    createdAt  DateTime   @default(now())
+    updatedAt  DateTime   @updatedAt
+}

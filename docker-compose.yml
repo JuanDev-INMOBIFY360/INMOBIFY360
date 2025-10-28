@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: inmobify360_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: inmobify360
+      MYSQL_USER: inmobify
+      MYSQL_PASSWORD: inmobify123
+    ports:
+      - "3307:3307"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  api:
+    build: .
+    container_name: inmobify360_api
+    restart: unless-stopped
+    ports:
+    - "5000:5000"
+    env_file:
+      - .env
+    depends_on:
+      - mysql
+    volumes:
+      - .:/app
+    command: ["npm", "run", "dev"]
+volumes:
+  mysql_data:
