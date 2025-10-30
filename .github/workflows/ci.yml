@@ -1,13 +1,13 @@
-name: CI - Node.js + Prisma + MySQL
+name: 🚀 CI - Node.js API
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
-  build:
+  build-test:
     runs-on: ubuntu-latest
 
     services:
@@ -20,44 +20,30 @@ jobs:
           MYSQL_PASSWORD: inmobify123
         ports:
           - 3306:3306
-        # Esperar a que MySQL esté disponible antes de continuar
         options: >-
           --health-cmd="mysqladmin ping -h localhost -uroot -proot"
           --health-interval=10s
           --health-timeout=5s
-          --health-retries=5
+          --health-retries=3
 
     steps:
-      - name: Checkout code
+      - name: ⬇️ Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm install
+      - name: 📦 Install dependencies
+        run: npm ci
 
-      - name: Wait for MySQL to be ready
-        run: |
-          for i in {1..20}; do
-            if mysqladmin ping -h 127.0.0.1 -u root -proot --silent; then
-              echo " MySQL is ready!"
-              break
-            fi
-            echo "⏳ Waiting for MySQL..."
-            sleep 3
-          done
-
-      - name: Generate Prisma Client
+      - name: ⚙️ Generate Prisma Client
         run: npx prisma generate
 
-      - name: Run Prisma Migrations
-        env:
-          DATABASE_URL: ${ { secrets.DATABASE_URL } }
-        run: npx prisma migrate deploy
+      - name: 🧹 Run Linter
+        run: npm run lint --if-present
 
-      - name: Build app
-        run: npm run build --if-present
+      - name: 🧪 Run Tests
+        run: npm test --if-present
