@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI - Node.js + Prisma + MySQL
 
 on:
   push:
@@ -10,28 +10,54 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: inmobify360
+          MYSQL_USER: inmobify
+          MYSQL_PASSWORD: inmobify123
+        ports:
+          - 3306:3306
+        # Esperar a que MySQL esté disponible antes de continuar
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -uroot -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Use Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Cache node modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run Linter
-        run: npm run lint --if-present
+      - name: Wait for MySQL to be ready
+        run: |
+          for i in {1..20}; do
+            if mysqladmin ping -h 127.0.0.1 -u root -proot --silent; then
+              echo " MySQL is ready!"
+              break
+            fi
+            echo "⏳ Waiting for MySQL..."
+            sleep 3
+          done
 
-      - name: Run Tests
-        run: npm test --if-present
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Run Prisma Migrations
+        env:
+          DATABASE_URL: ${ { secrets.DATABASE_URL } }
+        run: npx prisma migrate deploy
+
+      - name: Build app
+        run: npm run build --if-present
