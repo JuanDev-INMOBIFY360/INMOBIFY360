@@ -13,6 +13,8 @@ import privilegesRoutes from "./modules/priviliges/privileges.routes.js";
 import ownerRoutes from "./modules/owner/owner.routes.js";
 import userRoutes from "./modules/user/user.routes.js";
 import propertyRoutes from "./modules/property/property.routes.js";
+import authRoutes from "./modules/auth/auth.route.js";
+import typeRoutes from "./modules/tyeproperty/type.route.js";
 dotenv.config();
 
 class App {
@@ -40,6 +42,8 @@ class App {
     this.app.use("/owners", ownerRoutes);
     this.app.use("/users", userRoutes);
     this.app.use("/properties", propertyRoutes);
+    this.app.use("/auth", authRoutes);
+    this.app.use("/types", typeRoutes);
 
   
     this.app.get("/", (req, res) => {

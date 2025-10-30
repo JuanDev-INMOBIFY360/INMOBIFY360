@@ -6,13 +6,16 @@ import {
   updatePropertyController,
   deletePropertyController,
 } from "./property.controller.js";
+import { authorize } from "../../middleware/authorize.middleware.js";
+import { verifyToken } from "../../utils/jwt.js";
+
 
 const router = Router();
 
-router.get("/", getAllPropertiesController);
-router.get("/:id", getPropertyByIdController);
-router.post("/", createPropertyController);
-router.put("/:id", updatePropertyController);
-router.delete("/:id", deletePropertyController);
+router.get("/",verifyToken,authorize, getAllPropertiesController);
+router.get("/:id", verifyToken,authorize,getPropertyByIdController);
+router.post("/",verifyToken,authorize, createPropertyController);
+router.put("/:id",verifyToken,authorize, updatePropertyController);
+router.delete("/:id",verifyToken,authorize, deletePropertyController);
 
 export default router;

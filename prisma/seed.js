@@ -1,4 +1,8 @@
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcryptjs";
+import dotenv from "dotenv";
+
+dotenv.config();
 const prisma = new PrismaClient();
 
 async function main() {
@@ -85,7 +89,7 @@ async function main() {
   });
 
   // ===============================
-  // Permisos (para el rol Administrador)
+  //  Permisos (para el rol Administrador)
   // ===============================
   await prisma.permissions.createMany({
     data: [
@@ -95,42 +99,52 @@ async function main() {
       { name: "role", roleId: 1 },
       { name: "country", roleId: 1 },
       { name: "city", roleId: 1 },
+      { name: "department", roleId: 1 },
+      { name: "neighborhood", roleId: 1 },
       { name: "typeProperty", roleId: 1 },
-      { name: "neighborhoods", roleId: 1 },
     ],
     skipDuplicates: true,
   });
 
   // ===============================
-  //  Privilegios (para el permiso property)
+  //  Privilegios (para todos los permisos del rol Administrador)
   // ===============================
-  await prisma.privileges.createMany({
-    data: [
-      { permissionId: 1, action: "CREATE" },
-      { permissionId: 1, action: "READ" },
-      { permissionId: 1, action: "UPDATE" },
-      { permissionId: 1, action: "DELETE" },
-      { permissionId: 1, action: "CHANGE_STATE" },
-    ],
-    skipDuplicates: true,
+  const adminPermissions = await prisma.permissions.findMany({
+    where: { roleId: 1 },
   });
 
+  for (const perm of adminPermissions) {
+    await prisma.privileges.createMany({
+      data: [
+        { permissionId: perm.id, action: "CREATE" },
+        { permissionId: perm.id, action: "READ" },
+        { permissionId: perm.id, action: "UPDATE" },
+        { permissionId: perm.id, action: "DELETE" },
+        { permissionId: perm.id, action: "CHANGE_STATE" },
+      ],
+      skipDuplicates: true,
+    });
+  }
+
   // ===============================
-  //  Usuario administrador
+  //  Usuario administrador (con contraseña hasheada)
   // ===============================
+  const saltRounds = parseInt(process.env.HASHED_PASSWORD_SALT_ROUNDS) || 10;
+  const hashedPassword = await bcrypt.hash(process.env.USER_ADMIN_PASSWORD, saltRounds);
+
   await prisma.user.createMany({
     data: [
       {
-        name: "Admin Inmobify360",
-        email: "adminInmobify360@gmail.com",
-        password: "adminInmobify123",
+        email: process.env.USER_ADMIN,
+        password: hashedPassword,
+        name: "Admin",
         roleId: 1,
       },
     ],
     skipDuplicates: true,
   });
 
-  console.log(" Seed completado con éxito ");
+  console.log("✅ Seed completado con éxito");
 }
 
 main()

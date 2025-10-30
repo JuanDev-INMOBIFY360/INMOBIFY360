@@ -7,11 +7,14 @@ import {
   deleteUserController,
 } from "./user.controller.js";
 
+import { authorize } from "../../middleware/authorize.middleware.js";
+import { verifyToken } from "../../utils/jwt.js";
+
 const router = express.Router();
-router.get("/", getAllUsersController);
-router.get("/:id", getUserByIdController);
-router.post("/", createUserController);
-router.put("/:id", updateUserController);
-router.delete("/:id", deleteUserController);
+router.get("/",verifyToken,authorize, getAllUsersController);
+router.get("/:id",verifyToken,authorize, getUserByIdController);
+router.post("/",verifyToken,authorize, createUserController);
+router.put("/:id",verifyToken,authorize, updateUserController);
+router.delete("/:id",verifyToken,authorize, deleteUserController);
 
 export default router;

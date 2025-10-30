@@ -6,13 +6,15 @@ import {
   deleteCountryController,
 } from "./country.controller.js";
 import express from "express";
+import { authorize } from "../../middleware/authorize.middleware.js";
+import { authMiddleware } from "../../middleware/auth.middleware.js";
 
 const router = express.Router();
 
-router.get("/", getCountriesController);
-router.get("/:id", getCountryByIdController);
-router.post("/", createCountryController);
-router.put("/:id", updateCountryController);
-router.delete("/:id", deleteCountryController);
+router.get("/",authMiddleware, authorize("country", "READ"), getCountriesController);
+router.get("/:id",authMiddleware, authorize("country", "READ"), getCountryByIdController);
+router.post("/",authMiddleware, authorize("country", "CREATE"), createCountryController);
+router.put("/:id",authMiddleware, authorize("country", "UPDATE"), updateCountryController);
+router.delete("/:id",authMiddleware, authorize("country", "DELETE"), deleteCountryController);
 
 export default router;
