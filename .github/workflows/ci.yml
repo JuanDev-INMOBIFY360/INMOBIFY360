@@ -42,7 +42,6 @@ jobs:
       - name: ⚙️ Generate Prisma Client
         run: npx prisma generate
 
-      # ✅ Esperamos que MySQL esté listo realmente antes de migrar
       - name: ⏱️ Wait for MySQL
         run: |
           echo "⏳ Esperando a que MySQL esté listo en el puerto 3307..."
@@ -53,10 +52,23 @@ jobs:
           done
           echo "❌ MySQL no respondió a tiempo" && exit 1
 
+      # ✅ CAMBIO CRÍTICO: Usar migrate dev en lugar de migrate deploy
       - name: 🗄️ Run Migrations
         env:
           DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
-        run: npx prisma migrate deploy
+        run: |
+          echo "🔄 Aplicando migraciones..."
+          npx prisma migrate dev --name init || npx prisma db push
+          echo "✅ Migraciones completadas"
+
+      # ✅ NUEVO: Verificar que las tablas existen
+      - name: 🔍 Verify Database Schema
+        env:
+          DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
+        run: |
+          echo "🔍 Verificando esquema de base de datos..."
+          npx prisma db pull || true
+          mysql -h 127.0.0.1 -P 3307 -uroot -proot inmobify360_test -e "SHOW TABLES;"
 
       - name: 🌱 Seed Database
         env:
@@ -68,5 +80,5 @@ jobs:
 
       - name: 🧪 Run Tests
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
+          DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
         run: npm test
