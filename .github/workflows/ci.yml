@@ -19,7 +19,7 @@ jobs:
           MYSQL_USER: inmobify
           MYSQL_PASSWORD: inmobify123
         ports:
-          - 3306:3306
+          - 3307:3306 # 👈 el contenedor expone 3306, pero lo mapeamos al 3307 externo
         options: >-
           --health-cmd="mysqladmin ping -h localhost -uroot -proot"
           --health-interval=10s
@@ -44,12 +44,12 @@ jobs:
 
       - name: 🗄️ Run Migrations
         env:
-          DATABASE_URL: mysql://root:root@localhost:3306/inmobify360_test
+          DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
         run: npx prisma migrate deploy
 
-      - name: 🌱 Seed Database (opcional)
+      - name: 🌱 Seed Database
         env:
-          DATABASE_URL: mysql://root:root@localhost:3306/inmobify360_test
+          DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
           HASHED_PASSWORD_SALT_ROUNDS: 10
           USER_ADMIN: admin_andres@inmobify360.com
           USER_ADMIN_PASSWORD: Admin_andres1234
