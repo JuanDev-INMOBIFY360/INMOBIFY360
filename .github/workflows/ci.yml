@@ -15,7 +15,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: inmobify360
+          MYSQL_DATABASE: inmobify360_test
           MYSQL_USER: inmobify
           MYSQL_PASSWORD: inmobify123
         ports:
@@ -42,8 +42,20 @@ jobs:
       - name: ⚙️ Generate Prisma Client
         run: npx prisma generate
 
-      - name: 🧹 Run Linter
-        run: npm run lint --if-present
+      - name: 🗄️ Run Migrations
+        env:
+          DATABASE_URL: mysql://root:root@localhost:3306/inmobify360_test
+        run: npx prisma migrate deploy
+
+      - name: 🌱 Seed Database (opcional)
+        env:
+          DATABASE_URL: mysql://root:root@localhost:3306/inmobify360_test
+          HASHED_PASSWORD_SALT_ROUNDS: 10
+          USER_ADMIN: admin_andres@inmobify360.com
+          USER_ADMIN_PASSWORD: Admin_andres1234
+        run: node prisma/seed.js
 
       - name: 🧪 Run Tests
-        run: npm test --if-present
+        env:
+          DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
+        run: npm test
