@@ -19,12 +19,12 @@ jobs:
           MYSQL_USER: inmobify
           MYSQL_PASSWORD: inmobify123
         ports:
-          - 3307:3306 # 👈 el contenedor expone 3306, pero lo mapeamos al 3307 externo
+          - 3307:3306
         options: >-
           --health-cmd="mysqladmin ping -h localhost -uroot -proot"
           --health-interval=10s
           --health-timeout=5s
-          --health-retries=3
+          --health-retries=5
 
     steps:
       - name: ⬇️ Checkout repository
@@ -41,6 +41,17 @@ jobs:
 
       - name: ⚙️ Generate Prisma Client
         run: npx prisma generate
+
+      # ✅ Esperamos que MySQL esté listo realmente antes de migrar
+      - name: ⏱️ Wait for MySQL
+        run: |
+          echo "⏳ Esperando a que MySQL esté listo en el puerto 3307..."
+          for i in {1..30}; do
+            nc -zv localhost 3307 && echo "✅ MySQL disponible" && exit 0
+            echo "Esperando a MySQL ($i/30)..."
+            sleep 3
+          done
+          echo "❌ MySQL no respondió a tiempo" && exit 1
 
       - name: 🗄️ Run Migrations
         env:
