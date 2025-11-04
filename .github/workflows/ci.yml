@@ -2,9 +2,9 @@ name: 🚀 CI - Node.js API
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-test:
@@ -34,7 +34,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
 
       - name: 📦 Install dependencies
         run: npm ci
@@ -52,7 +52,6 @@ jobs:
           done
           echo "❌ MySQL no respondió a tiempo" && exit 1
 
-      # ✅ CAMBIO CRÍTICO: Usar migrate dev en lugar de migrate deploy
       - name: 🗄️ Run Migrations
         env:
           DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
@@ -61,7 +60,6 @@ jobs:
           npx prisma migrate dev --name init || npx prisma db push
           echo "✅ Migraciones completadas"
 
-      # ✅ NUEVO: Verificar que las tablas existen
       - name: 🔍 Verify Database Schema
         env:
           DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
@@ -81,4 +79,9 @@ jobs:
       - name: 🧪 Run Tests
         env:
           DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
+          HASHED_PASSWORD_SALT_ROUNDS: 10
+          USER_ADMIN: admin_andres@inmobify360.com
+          USER_ADMIN_PASSWORD: Admin_andres1234
+          NODE_ENV: test
+          JWT_SECRET: test-jwt-secret-for-ci-only
         run: npm test
