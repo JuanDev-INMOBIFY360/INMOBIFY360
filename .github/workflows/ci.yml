@@ -57,16 +57,8 @@ jobs:
           DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
         run: |
           echo "🔄 Aplicando migraciones..."
-          npx prisma migrate dev --name init || npx prisma db push
+          npx prisma migrate deploy || npx prisma db push
           echo "✅ Migraciones completadas"
-
-      - name: 🔍 Verify Database Schema
-        env:
-          DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
-        run: |
-          echo "🔍 Verificando esquema de base de datos..."
-          npx prisma db pull || true
-          mysql -h 127.0.0.1 -P 3307 -uroot -proot inmobify360_test -e "SHOW TABLES;"
 
       - name: 🌱 Seed Database
         env:
@@ -78,10 +70,10 @@ jobs:
 
       - name: 🧪 Run Tests
         env:
+          NODE_ENV: test
           DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
           HASHED_PASSWORD_SALT_ROUNDS: 10
           USER_ADMIN: admin_andres@inmobify360.com
           USER_ADMIN_PASSWORD: Admin_andres1234
-          NODE_ENV: test
           JWT_SECRET: test-jwt-secret-for-ci-only
         run: npm test
