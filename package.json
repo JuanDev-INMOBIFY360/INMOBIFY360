@@ -9,10 +9,14 @@
     "start": "node src/server.js",
     "prisma": "npx prisma",
     "test:prepare": "dotenv -e .env.test -- npx prisma migrate deploy",
-    "test": "dotenv -e .env.test -- jest --runInBand"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {}
   },
   "repository": {
     "type": "git",
