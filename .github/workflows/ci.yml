@@ -52,12 +52,12 @@ jobs:
           done
           echo "❌ MySQL no respondió a tiempo" && exit 1
 
-      - name: 🗄️ Run Migrations
+      - name: 🗄️ Run Migrations (create schema if needed)
         env:
           DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
         run: |
-          echo "🔄 Aplicando migraciones..."
-          npx prisma migrate deploy || npx prisma db push
+          echo "🔄 Aplicando migraciones o creando esquema..."
+          npx prisma migrate deploy || npx prisma migrate dev --name init --create-only || npx prisma db push
           echo "✅ Migraciones completadas"
 
       - name: 🌱 Seed Database
