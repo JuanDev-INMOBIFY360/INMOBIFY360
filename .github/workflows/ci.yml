@@ -68,5 +68,5 @@ jobs:
 
       - name: 🧪 Run Tests
         env:
-          DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
+          DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
         run: npm test
