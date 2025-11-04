@@ -1,5 +1,5 @@
 import request from "supertest";
-import app from "../src/app.js";
+import app from "../../src/app.js";
 
 describe("🔹 Pruebas básicas de la API", () => {
   it("Debe responder correctamente en la ruta raíz /", async () => {
