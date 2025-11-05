@@ -13,3 +13,4 @@ describe("🔹 Pruebas básicas de la API", () => {
     expect(res.statusCode).toBe(404);
   });
 });
+
