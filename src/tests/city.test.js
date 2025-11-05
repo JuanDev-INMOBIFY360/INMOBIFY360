@@ -1,34 +1,24 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-let department;
-
-beforeAll(async () => {
-  const country = await prisma.country.upsert({
-    where: { name: "Chile" },
-    update: {},
-    create: { name: "Chile" },
-  });
-
-  department = await prisma.department.upsert({
-    where: { name: "Santiago2" },
-    update: {},
-    create: { name: "Santiago2", countryId: country.id },
-  });
-});
-
-afterAll(async () => {
-  await prisma.$disconnect();
-});
-
 describe("City CRUD", () => {
-  it("Crea una ciudad sin romper el unique", async () => {
-    const city = await prisma.city.upsert({
-      where: { name: "Valparaíso" },
-      update: {},
-      create: { name: "Valparaíso", departmentId: department.id },
-    });
+  afterAll(async () => {
+    await prisma.$disconnect();
+  });
 
-    expect(city.name).toBe("Valparaíso");
+  let department;
+
+  beforeAll(async () => {
+    const country = await prisma.country.create({ data: { name: "Chile2" } });
+    department = await prisma.department.create({
+      data: { name: "Santiago2", countryId: country.id },
+    });
+  });
+
+  it("Crea una ciudad", async () => {
+    const city = await prisma.city.create({
+      data: { name: "Providencia2", departmentId: department.id },
+    });
+    expect(city).toHaveProperty("id");
   });
 });
