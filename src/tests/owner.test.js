@@ -8,7 +8,7 @@ describe("Owner CRUD", () => {
 
   it("Crea un propietario", async () => {
     const owner = await prisma.owner.create({
-      data: { name: "Juan Pérez", email: "juanp@example.com" },
+      data: { name: "Juan Pérez2", email: "juanp2@example.com" },
     });
     expect(owner).toHaveProperty("id");
   });

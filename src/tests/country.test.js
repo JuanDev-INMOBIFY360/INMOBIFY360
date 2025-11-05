@@ -8,7 +8,7 @@ describe("Country CRUD", () => {
 
   it("Crea un país", async () => {
     const country = await prisma.country.create({
-      data: { name: "Colombia" },
+      data: { name: "Colombia2" },
     });
     expect(country).toHaveProperty("id");
   });
@@ -20,15 +20,15 @@ describe("Country CRUD", () => {
 
   it("Actualiza un país", async () => {
     const updated = await prisma.country.update({
-      where: { name: "Colombia" },
+      where: { name: "Colombia2" },
       data: { name: "Ecuador" },
     });
-    expect(updated.name).toBe("Ecuador");
+    expect(updated.name).toBe("Ecuador2");
   });
 
   it("Elimina un país", async () => {
     const deleted = await prisma.country.delete({
-      where: { name: "Ecuador" },
+      where: { name: "Ecuador2" },
     });
     expect(deleted).toHaveProperty("id");
   });

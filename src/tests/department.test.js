@@ -9,13 +9,13 @@ describe("Department CRUD", () => {
   let country;
 
   beforeAll(async () => {
-    country = await prisma.country.create({ data: { name: "Perú" } });
+    country = await prisma.country.create({ data: { name: "Perú2" } });
   });
 
   it("Crea un departamento", async () => {
     const department = await prisma.department.create({
-      data: { name: "Lima", countryId: country.id },
+      data: { name: "Lima2", countryId: country.id },
     });
-    expect(department.name).toBe("Lima");
+    expect(department.name).toBe("Lima2");
   });
 });

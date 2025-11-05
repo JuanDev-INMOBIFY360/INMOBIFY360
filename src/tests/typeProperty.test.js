@@ -8,7 +8,7 @@ describe("TypeProperty CRUD", () => {
 
   it("Crea un tipo de propiedad", async () => {
     const type = await prisma.typeProperty.create({
-      data: { name: "Casa" },
+      data: { name: "Casa2" },
     });
     expect(type).toHaveProperty("id");
   });

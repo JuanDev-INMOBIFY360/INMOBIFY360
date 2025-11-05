@@ -8,8 +8,8 @@ describe("Roles CRUD", () => {
 
   it("Crea un rol", async () => {
     const role = await prisma.roles.create({
-      data: { name: "Administrador" },
+      data: { name: "Administrador2" },
     });
-    expect(role.name).toBe("Administrador");
+    expect(role.name).toBe("Administrador2");
   });
 });

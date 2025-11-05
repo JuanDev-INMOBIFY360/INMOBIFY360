@@ -17,8 +17,8 @@ describe("Privileges CRUD", () => {
 
   it("Crea un privilegio", async () => {
     const privilege = await prisma.privileges.create({
-      data: { action: "READ", permissionId: permission.id },
+      data: { action: "READ2", permissionId: permission.id },
     });
-    expect(privilege.action).toBe("READ");
+    expect(privilege.action).toBe("READ2");
   });
 });
