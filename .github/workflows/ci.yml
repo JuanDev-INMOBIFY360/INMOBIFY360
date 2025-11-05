@@ -60,7 +60,7 @@ jobs:
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/inmobify360_test
         run: |
           echo "🔄 Aplicando migraciones..."
-          npx prisma migrate deploy || npx prisma db push
+          npx prisma db push --accept-data-loss --skip-generate
           echo "✅ Migraciones completadas"
 
       - name: Verify Database Schema
@@ -69,6 +69,8 @@ jobs:
         run: |
           echo "🔍 Verificando esquema de base de datos..."
           mysql -h 127.0.0.1 -P 3306 -uroot -proot inmobify360_test -e "SHOW TABLES;"
+          echo "📋 Verificando tabla Country..."
+          mysql -h 127.0.0.1 -P 3306 -uroot -proot inmobify360_test -e "DESCRIBE Country;" || echo "⚠️ Tabla Country no existe"
 
       - name: Seed Database
         env:
