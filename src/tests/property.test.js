@@ -19,7 +19,7 @@ describe("Property CRUD", () => {
     neighborhood = await prisma.neighborhood.create({
       data: { name: "Del Carmen", cityId: city.id },
     });
-    type = await prisma.typeProperty.create({ data: { name: "Apartamento" } });
+    type = await prisma.typeProperty.create({ data: { name: "Apartamento2" } });
     owner = await prisma.owner.create({
       data: { name: "Carlos Ramírez", email: "carlos@example.com" },
     });
