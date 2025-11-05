@@ -9,7 +9,7 @@ services:
       MYSQL_USER: inmobify
       MYSQL_PASSWORD: inmobify123
     ports:
-      - "3307:3307"
+      - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
 
@@ -21,7 +21,7 @@ services:
     - "5000:5000"
     env_file:
       - .env
-      - .env.test
+   
     depends_on:
       - mysql
     volumes:

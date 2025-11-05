@@ -27,58 +27,58 @@ jobs:
           --health-retries=5
 
     steps:
-      - name: ⬇️ Checkout repository
+      - name:  Checkout repository
         uses: actions/checkout@v4
 
-      - name: ⚙️ Setup Node.js
+      - name:  Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "npm"
 
-      - name: 📦 Install dependencies
+      - name:  Install dependencies
         run: npm ci
 
-      - name: ⚙️ Generate Prisma Client
+      - name:  Generate Prisma Client
         run: npx prisma generate
 
-      - name: ⏱️ Wait for MySQL
+      - name:  Wait for MySQL
         run: |
-          echo "⏳ Esperando a que MySQL esté listo en el puerto 3307..."
+          echo " Esperando a que MySQL esté listo en el puerto 3306..."
           for i in {1..30}; do
-            nc -zv localhost 3307 && echo "✅ MySQL disponible" && exit 0
+            nc -zv localhost 3306 && echo " MySQL disponible" && exit 0
             echo "Esperando a MySQL ($i/30)..."
             sleep 3
           done
-          echo "❌ MySQL no respondió a tiempo" && exit 1
+          echo " MySQL no respondió a tiempo" && exit 1
 
-      - name: 🗄️ Run Migrations
+      - name:  Run Migrations
         env:
-          DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
+          DATABASE_URL: mysql://root:root@localhost:3306/inmobify360_test
         run: |
-          echo "🔄 Aplicando migraciones..."
+          echo " Aplicando migraciones..."
           npx prisma migrate dev --name init || npx prisma db push
-          echo "✅ Migraciones completadas"
+          echo " Migraciones completadas"
 
-      - name: 🔍 Verify Database Schema
+      - name:  Verify Database Schema
         env:
-          DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
+          DATABASE_URL: mysql://root:root@localhost:3306/inmobify360_test
         run: |
           echo "🔍 Verificando esquema de base de datos..."
           npx prisma db pull || true
-          mysql -h 127.0.0.1 -P 3307 -uroot -proot inmobify360_test -e "SHOW TABLES;"
+          mysql -h 127.0.0.1 -P 3306 -uroot -proot inmobify360_test -e "SHOW TABLES;"
 
-      - name: 🌱 Seed Database
+      - name:  Seed Database
         env:
-          DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
+          DATABASE_URL: mysql://root:root@localhost:3306/inmobify360_test
           HASHED_PASSWORD_SALT_ROUNDS: 10
           USER_ADMIN: admin_andres@inmobify360.com
           USER_ADMIN_PASSWORD: Admin_andres1234
         run: node prisma/seed.js
 
-      - name: 🧪 Run Tests
+      - name:  Run Tests
         env:
-          DATABASE_URL: mysql://root:root@localhost:3307/inmobify360_test
+          DATABASE_URL: mysql://root:root@localhost:3306/inmobify360_test
           HASHED_PASSWORD_SALT_ROUNDS: 10
           USER_ADMIN: admin_andres@inmobify360.com
           USER_ADMIN_PASSWORD: Admin_andres1234
