@@ -1,43 +1,64 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
+let city, neighborhood, type, owner;
+
+beforeAll(async () => {
+  const country = await prisma.country.upsert({
+    where: { name: "Colombia" },
+    update: {},
+    create: { name: "Colombia" },
+  });
+
+  const department = await prisma.department.upsert({
+    where: { name: "Antioquia" },
+    update: {},
+    create: { name: "Antioquia", countryId: country.id },
+  });
+
+  city = await prisma.city.upsert({
+    where: { name: "Medellín" },
+    update: {},
+    create: { name: "Medellín", departmentId: department.id },
+  });
+
+  neighborhood = await prisma.neighborhood.upsert({
+    where: { name: "El Poblado" },
+    update: {},
+    create: { name: "El Poblado", cityId: city.id },
+  });
+
+  type = await prisma.typeProperty.upsert({
+    where: { name: "Apartamento" },
+    update: {},
+    create: { name: "Apartamento" },
+  });
+
+  owner = await prisma.owner.upsert({
+    where: { email: "carlos@example.com" },
+    update: {},
+    create: { name: "Carlos Ramírez", email: "carlos@example.com" },
+  });
+});
+
+afterAll(async () => {
+  await prisma.$disconnect();
+});
+
 describe("Property CRUD", () => {
-  afterAll(async () => {
-    await prisma.$disconnect();
-  });
-
-  let owner, country, department, city, neighborhood, type;
-
-  beforeAll(async () => {
-    country = await prisma.country.create({ data: { name: "México" } });
-    department = await prisma.department.create({
-      data: { name: "CDMX", countryId: country.id },
-    });
-    city = await prisma.city.create({
-      data: { name: "Coyoacán", departmentId: department.id },
-    });
-    neighborhood = await prisma.neighborhood.create({
-      data: { name: "Del Carmen", cityId: city.id },
-    });
-    type = await prisma.typeProperty.create({ data: { name: "Apartamento" } });
-    owner = await prisma.owner.create({
-      data: { name: "Carlos Ramírez", email: "carlos@example.com" },
-    });
-  });
-
-  it("Crea una propiedad", async () => {
+  it("Crea una propiedad sin conflictos de unique", async () => {
     const property = await prisma.property.create({
       data: {
-        precio: 150000,
-        direccion: "Calle 123 #45-67",
-        ownerId: owner.id,
-        countryId: country.id,
-        departmentId: department.id,
-        cityId: city.id,
+        title: "Apartamento moderno en El Poblado",
+        description: "Hermoso apartamento con vista a la ciudad",
+        price: 300000000,
         neighborhoodId: neighborhood.id,
         typePropertyId: type.id,
+        ownerId: owner.id,
       },
     });
-    expect(property).toHaveProperty("id");
+
+    expect(property.title).toBe("Apartamento moderno en El Poblado");
+    expect(property.price).toBe(300000000);
   });
 });
