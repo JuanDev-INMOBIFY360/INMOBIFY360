@@ -96,13 +96,16 @@ model Permissions {
 }
 
 model Privileges {
-    id           Int             @id @default(autoincrement())
-    action       PrivilegeAction
-    permission   Permissions     @relation(fields: [permissionId], references: [id])
-    permissionId Int
-    createdAt    DateTime        @default(now())
-    updatedAt    DateTime        @updatedAt
+  id           Int          @id @default(autoincrement())
+  action       PrivilegeAction
+  permissionId Int
+  permission   Permissions  @relation(fields: [permissionId], references: [id])
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  @@unique([action, permissionId])
 }
+
 
 model TypeProperty {
     id         Int        @id @default(autoincrement())
