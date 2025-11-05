@@ -3,12 +3,6 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 describe("Pruebas de roles de usuario", () => {
-  // Limpieza antes de cada test (opcional)
-  beforeEach(async () => {
-    await prisma.roles.deleteMany(); // limpia la tabla de roles
-  });
-
-  // Cierra la conexión al terminar los tests
   afterAll(async () => {
     await prisma.$disconnect();
   });

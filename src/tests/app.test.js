@@ -9,7 +9,7 @@ describe("🔹 Pruebas básicas de la API", () => {
   });
 
   it("Debe devolver 404 para rutas no definidas", async () => {
-    const res = await request(app).get("/ruta-que-no-existe");
+    const res = await request(app).get("/*");
     expect(res.statusCode).toBe(404);
   });
 });
