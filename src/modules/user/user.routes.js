@@ -8,13 +8,14 @@ import {
 } from "./user.controller.js";
 
 import { authorize } from "../../middleware/authorize.middleware.js";
-import { verifyToken } from "../../utils/jwt.js";
+import { authMiddleware } from "../../middleware/auth.middleware.js";
+
 
 const router = express.Router();
-router.get("/",verifyToken,authorize, getAllUsersController);
-router.get("/:id",verifyToken,authorize, getUserByIdController);
-router.post("/",verifyToken,authorize, createUserController);
-router.put("/:id",verifyToken,authorize, updateUserController);
-router.delete("/:id",verifyToken,authorize, deleteUserController);
+router.get("/",authMiddleware,authorize, getAllUsersController);
+router.get("/:id",authMiddleware,authorize, getUserByIdController);
+router.post("/",authMiddleware,authorize, createUserController);
+router.put("/:id",authMiddleware,authorize, updateUserController);
+router.delete("/:id",authMiddleware,authorize, deleteUserController);
 
 export default router;
