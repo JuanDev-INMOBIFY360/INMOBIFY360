@@ -11,7 +11,6 @@ describe("Pruebas de roles de usuario", () => {
     const newRole = await prisma.roles.create({
       data: {
         name: "Tester",
-        description: "Rol para pruebas",
       },
     });
 
