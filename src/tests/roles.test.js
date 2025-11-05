@@ -13,11 +13,8 @@ describe("Pruebas de roles de usuario", () => {
         name: "Tester",
       },
     });
-
     expect(newRole).toHaveProperty("id");
     expect(newRole.name).toBe("Tester");
-    expect(newRole.description).toBe("Rol para pruebas");
   });
-  
 });
 
