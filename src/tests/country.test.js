@@ -21,7 +21,7 @@ describe("Country CRUD", () => {
   it("Actualiza un país", async () => {
     const updated = await prisma.country.update({
       where: { name: "Colombia2" },
-      data: { name: "Ecuador" },
+      data: { name: "Ecuador2" },
     });
     expect(updated.name).toBe("Ecuador2");
   });

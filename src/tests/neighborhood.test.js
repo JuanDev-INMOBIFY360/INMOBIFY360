@@ -9,7 +9,7 @@ describe("Neighborhood CRUD", () => {
   let city;
 
   beforeAll(async () => {
-    const country = await prisma.country.create({ data: { name: "Argentina" } });
+    const country = await prisma.country.create({ data: { name: "Argentina2" } });
     const dept = await prisma.department.create({
       data: { name: "Buenos Aires2", countryId: country.id },
     });
