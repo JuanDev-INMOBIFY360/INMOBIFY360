@@ -5,7 +5,7 @@ let permission;
 
 beforeAll(async () => {
   // Aseguramos que exista al menos un permiso
-  permission = await prisma.permission.upsert({
+  permission = await prisma.permissions.upsert({
     where: { name: "Permiso General" },
     update: {},
     create: { name: "Permiso General" },
