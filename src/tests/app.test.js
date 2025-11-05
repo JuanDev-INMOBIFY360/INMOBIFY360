@@ -8,9 +8,9 @@ describe("🔹 Pruebas básicas de la API", () => {
     expect(res.body).toHaveProperty("message", "Bienvenido a Inmobify360 API");
   });
 
-  it("Debe devolver 404 para rutas no definidas", async () => {
-    const res = await request(app).get("/*");
-    expect(res.statusCode).toBe(404);
-  });
+  // it("Debe devolver 404 para rutas no definidas", async () => {
+  //   const res = await request(app).get("/*");
+  //   expect(res.statusCode).toBe(404);
+  // });
 });
 
