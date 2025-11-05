@@ -7,15 +7,14 @@ import {
   deletePropertyController,
 } from "./property.controller.js";
 import { authorize } from "../../middleware/authorize.middleware.js";
-import { verifyToken } from "../../utils/jwt.js";
-
+import { authMiddleware } from "../../middleware/auth.middleware.js";
 
 const router = Router();
 
-router.get("/",verifyToken,authorize, getAllPropertiesController);
-router.get("/:id", verifyToken,authorize,getPropertyByIdController);
-router.post("/",verifyToken,authorize, createPropertyController);
-router.put("/:id",verifyToken,authorize, updatePropertyController);
-router.delete("/:id",verifyToken,authorize, deletePropertyController);
+router.get("/", authMiddleware, authorize("property", "READ"), getAllPropertiesController);
+router.get("/:id", authMiddleware, authorize("property", "READ"), getPropertyByIdController);
+router.post("/", authMiddleware, authorize("property", "CREATE"), createPropertyController);
+router.put("/:id", authMiddleware, authorize("property", "UPDATE"), updatePropertyController);
+router.delete("/:id", authMiddleware, authorize("property", "DELETE"), deletePropertyController);
 
 export default router;
