@@ -12,7 +12,7 @@ import { authorize } from "../../middleware/authorize.middleware.js";
 
 const router = Router();
 
-router.get("/", authMiddleware, authorize("city", "READ"), getAllCities);
+router.get("/",  getAllCities);
 router.get("/:id", authMiddleware, authorize("city", "READ"), getCityByIdController);
 router.post("/", authMiddleware, authorize("city", "CREATE"), createCityController);
 router.put("/:id", authMiddleware, authorize("city", "UPDATE"), updateCityController);

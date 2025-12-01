@@ -1,0 +1,4658 @@
+{
+  "country": "Colombia",
+  "departments": [
+    {
+      "name": "11",
+      "cities": [
+        {
+          "name": "BOGOTÁ, D.C.",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "13",
+      "cities": [
+        {
+          "name": "CARTAGENA DE INDIAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "ACHÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALTOS DEL ROSARIO",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARENAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARJONA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARROYOHONDO",
+          "neighborhoods": []
+        },
+        {
+          "name": "BARRANCO DE LOBA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CALAMAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "CANTAGALLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CICUCO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CÓRDOBA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CLEMENCIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL CARMEN DE BOLÍVAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL GUAMO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL PEÑÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "HATILLO DE LOBA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MAGANGUÉ",
+          "neighborhoods": []
+        },
+        {
+          "name": "MAHATES",
+          "neighborhoods": []
+        },
+        {
+          "name": "MARGARITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MARÍA LA BAJA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MONTECRISTO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA CRUZ DE MOMPOX",
+          "neighborhoods": []
+        },
+        {
+          "name": "MORALES",
+          "neighborhoods": []
+        },
+        {
+          "name": "NOROSÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "PINILLOS",
+          "neighborhoods": []
+        },
+        {
+          "name": "REGIDOR",
+          "neighborhoods": []
+        },
+        {
+          "name": "RÍO VIEJO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN CRISTÓBAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN ESTANISLAO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN FERNANDO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JACINTO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JACINTO DEL CAUCA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JUAN NEPOMUCENO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN MARTÍN DE LOBA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN PABLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA CATALINA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA ROSA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA ROSA DEL SUR",
+          "neighborhoods": []
+        },
+        {
+          "name": "SIMITÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SOPLAVIENTO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TALAIGUA NUEVO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TIQUISIO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TURBACO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TURBANÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLANUEVA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ZAMBRANO",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "15",
+      "cities": [
+        {
+          "name": "TUNJA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALMEIDA",
+          "neighborhoods": []
+        },
+        {
+          "name": "AQUITANIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARCABUCO",
+          "neighborhoods": []
+        },
+        {
+          "name": "BELÉN",
+          "neighborhoods": []
+        },
+        {
+          "name": "BERBEO",
+          "neighborhoods": []
+        },
+        {
+          "name": "BETÉITIVA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BOAVITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BOYACÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "BRICEÑO",
+          "neighborhoods": []
+        },
+        {
+          "name": "BUENAVISTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BUSBANZÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CALDAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAMPOHERMOSO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CERINZA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHINAVITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHIQUINQUIRÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHISCAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHITARAQUE",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHIVATÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CIÉNEGA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CÓMBITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "COPER",
+          "neighborhoods": []
+        },
+        {
+          "name": "CORRALES",
+          "neighborhoods": []
+        },
+        {
+          "name": "COVARACHÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CUBARÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CUCAITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CUÍTIVA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHÍQUIZA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHIVOR",
+          "neighborhoods": []
+        },
+        {
+          "name": "DUITAMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL COCUY",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL ESPINO",
+          "neighborhoods": []
+        },
+        {
+          "name": "FIRAVITOBA",
+          "neighborhoods": []
+        },
+        {
+          "name": "FLORESTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GACHANTIVÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "GÁMEZA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GARAGOA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUACAMAYAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUATEQUE",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUAYATÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "GÜICÁN DE LA SIERRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "IZA",
+          "neighborhoods": []
+        },
+        {
+          "name": "JENESANO",
+          "neighborhoods": []
+        },
+        {
+          "name": "JERICÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "LABRANZAGRANDE",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA CAPILLA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA VICTORIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA UVITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLA DE LEYVA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MACANAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "MARIPÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "MIRAFLORES",
+          "neighborhoods": []
+        },
+        {
+          "name": "MONGUA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MONGUÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "MONIQUIRÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "MOTAVITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MUZO",
+          "neighborhoods": []
+        },
+        {
+          "name": "NOBSA",
+          "neighborhoods": []
+        },
+        {
+          "name": "NUEVO COLÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "OICATÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "OTANCHE",
+          "neighborhoods": []
+        },
+        {
+          "name": "PACHAVITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PÁEZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "PAIPA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PAJARITO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PANQUEBA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PAUNA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PAYA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PAZ DE RÍO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PESCA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PISBA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO BOYACÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "QUÍPAMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "RAMIRIQUÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "RÁQUIRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "RONDÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "SABOYÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SÁCHICA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAMACÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN EDUARDO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JOSÉ DE PARE",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN LUIS DE GACENO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN MATEO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN MIGUEL DE SEMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN PABLO DE BORBUR",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTANA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA MARÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA ROSA DE VITERBO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA SOFÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SATIVANORTE",
+          "neighborhoods": []
+        },
+        {
+          "name": "SATIVASUR",
+          "neighborhoods": []
+        },
+        {
+          "name": "SIACHOQUE",
+          "neighborhoods": []
+        },
+        {
+          "name": "SOATÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SOCOTÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SOCHA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SOGAMOSO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SOMONDOCO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SORA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SOTAQUIRÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SORACÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUSACÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUTAMARCHÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUTATENZA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TASCO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TENZA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TIBANÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "TIBASOSA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TINJACÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "TIPACOQUE",
+          "neighborhoods": []
+        },
+        {
+          "name": "TOCA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TOGÜÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "TÓPAGA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TOTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TUNUNGUÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "TURMEQUÉ",
+          "neighborhoods": []
+        },
+        {
+          "name": "TUTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TUTAZÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "ÚMBITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VENTAQUEMADA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VIRACACHÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "ZETAQUIRA",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "17",
+      "cities": [
+        {
+          "name": "MANIZALES",
+          "neighborhoods": []
+        },
+        {
+          "name": "AGUADAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "ANSERMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARANZAZU",
+          "neighborhoods": []
+        },
+        {
+          "name": "BELALCÁZAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHINCHINÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "FILADELFIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA DORADA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA MERCED",
+          "neighborhoods": []
+        },
+        {
+          "name": "MANZANARES",
+          "neighborhoods": []
+        },
+        {
+          "name": "MARMATO",
+          "neighborhoods": []
+        },
+        {
+          "name": "MARQUETALIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MARULANDA",
+          "neighborhoods": []
+        },
+        {
+          "name": "NEIRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "NORCASIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PÁCORA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PALESTINA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PENSILVANIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "RIOSUCIO",
+          "neighborhoods": []
+        },
+        {
+          "name": "RISARALDA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SALAMINA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAMANÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JOSÉ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUPÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VICTORIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLAMARÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VITERBO",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "18",
+      "cities": [
+        {
+          "name": "FLORENCIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALBANIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BELÉN DE LOS ANDAQUÍES",
+          "neighborhoods": []
+        },
+        {
+          "name": "CARTAGENA DEL CHAIRÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CURILLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL DONCELLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL PAUJÍL",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA MONTAÑITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MILÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "MORELIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO RICO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JOSÉ DEL FRAGUA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN VICENTE DEL CAGUÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "SOLANO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SOLITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VALPARAÍSO",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "19",
+      "cities": [
+        {
+          "name": "POPAYÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALMAGUER",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARGELIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BALBOA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BOLÍVAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "BUENOS AIRES",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAJIBÍO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CALDONO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CALOTO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CORINTO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL TAMBO",
+          "neighborhoods": []
+        },
+        {
+          "name": "FLORENCIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUACHENÉ",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUAPI",
+          "neighborhoods": []
+        },
+        {
+          "name": "INZÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "JAMBALÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA SIERRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA VEGA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LÓPEZ DE MICAY",
+          "neighborhoods": []
+        },
+        {
+          "name": "MERCADERES",
+          "neighborhoods": []
+        },
+        {
+          "name": "MIRANDA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MORALES",
+          "neighborhoods": []
+        },
+        {
+          "name": "PADILLA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PÁEZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "PATÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PIAMONTE",
+          "neighborhoods": []
+        },
+        {
+          "name": "PIENDAMÓ - TUNÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO TEJADA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PURACÉ",
+          "neighborhoods": []
+        },
+        {
+          "name": "ROSAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN SEBASTIÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTANDER DE QUILICHAO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA ROSA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SILVIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SOTARÁ - PAISPAMBA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUÁREZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUCRE",
+          "neighborhoods": []
+        },
+        {
+          "name": "TIMBÍO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TIMBIQUÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "TORIBÍO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TOTORÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLA RICA",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "20",
+      "cities": [
+        {
+          "name": "VALLEDUPAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "AGUACHICA",
+          "neighborhoods": []
+        },
+        {
+          "name": "AGUSTÍN CODAZZI",
+          "neighborhoods": []
+        },
+        {
+          "name": "ASTREA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BECERRIL",
+          "neighborhoods": []
+        },
+        {
+          "name": "BOSCONIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHIMICHAGUA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHIRIGUANÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CURUMANÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL COPEY",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL PASO",
+          "neighborhoods": []
+        },
+        {
+          "name": "GAMARRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GONZÁLEZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA GLORIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA JAGUA DE IBIRICO",
+          "neighborhoods": []
+        },
+        {
+          "name": "MANAURE BALCÓN DEL CESAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "PAILITAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "PELAYA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUEBLO BELLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "RÍO DE ORO",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA PAZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN ALBERTO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN DIEGO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN MARTÍN",
+          "neighborhoods": []
+        },
+        {
+          "name": "TAMALAMEQUE",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "23",
+      "cities": [
+        {
+          "name": "MONTERÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "AYAPEL",
+          "neighborhoods": []
+        },
+        {
+          "name": "BUENAVISTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CANALETE",
+          "neighborhoods": []
+        },
+        {
+          "name": "CERETÉ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHIMÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHINÚ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CIÉNAGA DE ORO",
+          "neighborhoods": []
+        },
+        {
+          "name": "COTORRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA APARTADA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LORICA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LOS CÓRDOBAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "MOMIL",
+          "neighborhoods": []
+        },
+        {
+          "name": "MONTELÍBANO",
+          "neighborhoods": []
+        },
+        {
+          "name": "MOÑITOS",
+          "neighborhoods": []
+        },
+        {
+          "name": "PLANETA RICA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUEBLO NUEVO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO ESCONDIDO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO LIBERTADOR",
+          "neighborhoods": []
+        },
+        {
+          "name": "PURÍSIMA DE LA CONCEPCIÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAHAGÚN",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN ANDRÉS DE SOTAVENTO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN ANTERO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN BERNARDO DEL VIENTO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN CARLOS",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JOSÉ DE URÉ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN PELAYO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TIERRALTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TUCHÍN",
+          "neighborhoods": []
+        },
+        {
+          "name": "VALENCIA",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "25",
+      "cities": [
+        {
+          "name": "AGUA DE DIOS",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALBÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "ANAPOIMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ANOLAIMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARBELÁEZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "BELTRÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "BITUIMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BOJACÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CABRERA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CACHIPAY",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAJICÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAPARRAPÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CÁQUEZA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CARMEN DE CARUPA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHAGUANÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHIPAQUE",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHOACHÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHOCONTÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "COGUA",
+          "neighborhoods": []
+        },
+        {
+          "name": "COTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CUCUNUBÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL COLEGIO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL PEÑÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL ROSAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "FACATATIVÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "FÓMEQUE",
+          "neighborhoods": []
+        },
+        {
+          "name": "FOSCA",
+          "neighborhoods": []
+        },
+        {
+          "name": "FUNZA",
+          "neighborhoods": []
+        },
+        {
+          "name": "FÚQUENE",
+          "neighborhoods": []
+        },
+        {
+          "name": "FUSAGASUGÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "GACHALÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "GACHANCIPÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "GACHETÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "GAMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GIRARDOT",
+          "neighborhoods": []
+        },
+        {
+          "name": "GRANADA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUACHETÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUADUAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUASCA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUATAQUÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUATAVITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUAYABAL DE SÍQUIMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUAYABETAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUTIÉRREZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "JERUSALÉN",
+          "neighborhoods": []
+        },
+        {
+          "name": "JUNÍN",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA CALERA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA MESA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA PALMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA PEÑA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA VEGA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LENGUAZAQUE",
+          "neighborhoods": []
+        },
+        {
+          "name": "MACHETÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "MADRID",
+          "neighborhoods": []
+        },
+        {
+          "name": "MANTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MEDINA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MOSQUERA",
+          "neighborhoods": []
+        },
+        {
+          "name": "NARIÑO",
+          "neighborhoods": []
+        },
+        {
+          "name": "NEMOCÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "NILO",
+          "neighborhoods": []
+        },
+        {
+          "name": "NIMAIMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "NOCAIMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VENECIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PACHO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PAIME",
+          "neighborhoods": []
+        },
+        {
+          "name": "PANDI",
+          "neighborhoods": []
+        },
+        {
+          "name": "PARATEBUENO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PASCA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO SALGAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "PULÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "QUEBRADANEGRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "QUETAME",
+          "neighborhoods": []
+        },
+        {
+          "name": "QUIPILE",
+          "neighborhoods": []
+        },
+        {
+          "name": "APULO",
+          "neighborhoods": []
+        },
+        {
+          "name": "RICAURTE",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN ANTONIO DEL TEQUENDAMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN BERNARDO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN CAYETANO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN FRANCISCO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JUAN DE RIOSECO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SASAIMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SESQUILÉ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SIBATÉ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SILVANIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SIMIJACA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SOACHA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SOPÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUBACHOQUE",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUESCA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUPATÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUSA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUTATAUSA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TABIO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TAUSA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TENA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TENJO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TIBACUY",
+          "neighborhoods": []
+        },
+        {
+          "name": "TIBIRITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TOCAIMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TOCANCIPÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "TOPAIPÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "UBALÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "UBAQUE",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLA DE SAN DIEGO DE UBATÉ",
+          "neighborhoods": []
+        },
+        {
+          "name": "UNE",
+          "neighborhoods": []
+        },
+        {
+          "name": "ÚTICA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VERGARA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VIANÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLAGÓMEZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLAPINZÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLETA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VIOTÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "YACOPÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "ZIPACÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "ZIPAQUIRÁ",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "27",
+      "cities": [
+        {
+          "name": "QUIBDÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "ACANDÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALTO BAUDÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "ATRATO",
+          "neighborhoods": []
+        },
+        {
+          "name": "BAGADÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "BAHÍA SOLANO",
+          "neighborhoods": []
+        },
+        {
+          "name": "BAJO BAUDÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "BOJAYÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL CANTÓN DEL SAN PABLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CARMEN DEL DARIÉN",
+          "neighborhoods": []
+        },
+        {
+          "name": "CÉRTEGUI",
+          "neighborhoods": []
+        },
+        {
+          "name": "CONDOTO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL CARMEN DE ATRATO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL LITORAL DEL SAN JUAN",
+          "neighborhoods": []
+        },
+        {
+          "name": "ISTMINA",
+          "neighborhoods": []
+        },
+        {
+          "name": "JURADÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "LLORÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "MEDIO ATRATO",
+          "neighborhoods": []
+        },
+        {
+          "name": "MEDIO BAUDÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "MEDIO SAN JUAN",
+          "neighborhoods": []
+        },
+        {
+          "name": "NÓVITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "NUEVO BELÉN DE BAJIRÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "NUQUÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "RÍO IRÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "RÍO QUITO",
+          "neighborhoods": []
+        },
+        {
+          "name": "RIOSUCIO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JOSÉ DEL PALMAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "SIPÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "TADÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "UNGUÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "UNIÓN PANAMERICANA",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "41",
+      "cities": [
+        {
+          "name": "NEIVA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ACEVEDO",
+          "neighborhoods": []
+        },
+        {
+          "name": "AGRADO",
+          "neighborhoods": []
+        },
+        {
+          "name": "AIPE",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALGECIRAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALTAMIRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BARAYA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAMPOALEGRE",
+          "neighborhoods": []
+        },
+        {
+          "name": "COLOMBIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ELÍAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "GARZÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "GIGANTE",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUADALUPE",
+          "neighborhoods": []
+        },
+        {
+          "name": "HOBO",
+          "neighborhoods": []
+        },
+        {
+          "name": "ÍQUIRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ISNOS",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA ARGENTINA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA PLATA",
+          "neighborhoods": []
+        },
+        {
+          "name": "NÁTAGA",
+          "neighborhoods": []
+        },
+        {
+          "name": "OPORAPA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PAICOL",
+          "neighborhoods": []
+        },
+        {
+          "name": "PALERMO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PALESTINA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PITAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "PITALITO",
+          "neighborhoods": []
+        },
+        {
+          "name": "RIVERA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SALADOBLANCO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN AGUSTÍN",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA MARÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUAZA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TARQUI",
+          "neighborhoods": []
+        },
+        {
+          "name": "TESALIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TELLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TERUEL",
+          "neighborhoods": []
+        },
+        {
+          "name": "TIMANÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLAVIEJA",
+          "neighborhoods": []
+        },
+        {
+          "name": "YAGUARÁ",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "44",
+      "cities": [
+        {
+          "name": "RIOHACHA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALBANIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BARRANCAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "DIBULLA",
+          "neighborhoods": []
+        },
+        {
+          "name": "DISTRACCIÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL MOLINO",
+          "neighborhoods": []
+        },
+        {
+          "name": "FONSECA",
+          "neighborhoods": []
+        },
+        {
+          "name": "HATONUEVO",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA JAGUA DEL PILAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "MAICAO",
+          "neighborhoods": []
+        },
+        {
+          "name": "MANAURE",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JUAN DEL CESAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "URIBIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "URUMITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLANUEVA",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "47",
+      "cities": [
+        {
+          "name": "SANTA MARTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALGARROBO",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARACATACA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARIGUANÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CERRO DE SAN ANTONIO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHIVOLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CIÉNAGA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CONCORDIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL BANCO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL PIÑÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL RETÉN",
+          "neighborhoods": []
+        },
+        {
+          "name": "FUNDACIÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUAMAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "NUEVA GRANADA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PEDRAZA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PIJIÑO DEL CARMEN",
+          "neighborhoods": []
+        },
+        {
+          "name": "PIVIJAY",
+          "neighborhoods": []
+        },
+        {
+          "name": "PLATO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUEBLOVIEJO",
+          "neighborhoods": []
+        },
+        {
+          "name": "REMOLINO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SABANAS DE SAN ÁNGEL",
+          "neighborhoods": []
+        },
+        {
+          "name": "SALAMINA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN SEBASTIÁN DE BUENAVISTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN ZENÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA ANA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA BÁRBARA DE PINTO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SITIONUEVO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TENERIFE",
+          "neighborhoods": []
+        },
+        {
+          "name": "ZAPAYÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "ZONA BANANERA",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "50",
+      "cities": [
+        {
+          "name": "VILLAVICENCIO",
+          "neighborhoods": []
+        },
+        {
+          "name": "ACACÍAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "BARRANCA DE UPÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CABUYARO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CASTILLA LA NUEVA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CUBARRAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "CUMARAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL CALVARIO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL CASTILLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL DORADO",
+          "neighborhoods": []
+        },
+        {
+          "name": "FUENTE DE ORO",
+          "neighborhoods": []
+        },
+        {
+          "name": "GRANADA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUAMAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "MAPIRIPÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "MESETAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA MACARENA",
+          "neighborhoods": []
+        },
+        {
+          "name": "URIBE",
+          "neighborhoods": []
+        },
+        {
+          "name": "LEJANÍAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO CONCORDIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO GAITÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO LÓPEZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO LLERAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO RICO",
+          "neighborhoods": []
+        },
+        {
+          "name": "RESTREPO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN CARLOS DE GUAROA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JUAN DE ARAMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JUANITO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN MARTÍN",
+          "neighborhoods": []
+        },
+        {
+          "name": "VISTAHERMOSA",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "52",
+      "cities": [
+        {
+          "name": "PASTO",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALBÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALDANA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ANCUYA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARBOLEDA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BARBACOAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "BELÉN",
+          "neighborhoods": []
+        },
+        {
+          "name": "BUESACO",
+          "neighborhoods": []
+        },
+        {
+          "name": "COLÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "CONSACÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CONTADERO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CÓRDOBA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CUASPUD CARLOSAMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CUMBAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "CUMBITARA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHACHAGÜÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL CHARCO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL PEÑOL",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL ROSARIO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL TABLÓN DE GÓMEZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL TAMBO",
+          "neighborhoods": []
+        },
+        {
+          "name": "FUNES",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUACHUCAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUAITARILLA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUALMATÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "ILES",
+          "neighborhoods": []
+        },
+        {
+          "name": "IMUÉS",
+          "neighborhoods": []
+        },
+        {
+          "name": "IPIALES",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA CRUZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA FLORIDA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA LLANADA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA TOLA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA UNIÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "LEIVA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LINARES",
+          "neighborhoods": []
+        },
+        {
+          "name": "LOS ANDES",
+          "neighborhoods": []
+        },
+        {
+          "name": "MAGÜÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "MALLAMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MOSQUERA",
+          "neighborhoods": []
+        },
+        {
+          "name": "NARIÑO",
+          "neighborhoods": []
+        },
+        {
+          "name": "OLAYA HERRERA",
+          "neighborhoods": []
+        },
+        {
+          "name": "OSPINA",
+          "neighborhoods": []
+        },
+        {
+          "name": "FRANCISCO PIZARRO",
+          "neighborhoods": []
+        },
+        {
+          "name": "POLICARPA",
+          "neighborhoods": []
+        },
+        {
+          "name": "POTOSÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "PROVIDENCIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERRES",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUPIALES",
+          "neighborhoods": []
+        },
+        {
+          "name": "RICAURTE",
+          "neighborhoods": []
+        },
+        {
+          "name": "ROBERTO PAYÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAMANIEGO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANDONÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN BERNARDO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN LORENZO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN PABLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN PEDRO DE CARTAGO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA BÁRBARA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTACRUZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAPUYES",
+          "neighborhoods": []
+        },
+        {
+          "name": "TAMINANGO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TANGUA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN ANDRÉS DE TUMACO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TÚQUERRES",
+          "neighborhoods": []
+        },
+        {
+          "name": "YACUANQUER",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "54",
+      "cities": [
+        {
+          "name": "SAN JOSÉ DE CÚCUTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ÁBREGO",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARBOLEDAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "BOCHALEMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BUCARASICA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CÁCOTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CÁCHIRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHINÁCOTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHITAGÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CONVENCIÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "CUCUTILLA",
+          "neighborhoods": []
+        },
+        {
+          "name": "DURANIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL CARMEN",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL TARRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL ZULIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GRAMALOTE",
+          "neighborhoods": []
+        },
+        {
+          "name": "HACARÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "HERRÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "LABATECA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA ESPERANZA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA PLAYA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LOS PATIOS",
+          "neighborhoods": []
+        },
+        {
+          "name": "LOURDES",
+          "neighborhoods": []
+        },
+        {
+          "name": "MUTISCUA",
+          "neighborhoods": []
+        },
+        {
+          "name": "OCAÑA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PAMPLONA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PAMPLONITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO SANTANDER",
+          "neighborhoods": []
+        },
+        {
+          "name": "RAGONVALIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SALAZAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN CALIXTO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN CAYETANO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTIAGO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SARDINATA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SILOS",
+          "neighborhoods": []
+        },
+        {
+          "name": "TEORAMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TIBÚ",
+          "neighborhoods": []
+        },
+        {
+          "name": "TOLEDO",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLA CARO",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLA DEL ROSARIO",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "63",
+      "cities": [
+        {
+          "name": "ARMENIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BUENAVISTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CALARCÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CIRCASIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CÓRDOBA",
+          "neighborhoods": []
+        },
+        {
+          "name": "FILANDIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GÉNOVA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA TEBAIDA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MONTENEGRO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PIJAO",
+          "neighborhoods": []
+        },
+        {
+          "name": "QUIMBAYA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SALENTO",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "66",
+      "cities": [
+        {
+          "name": "PEREIRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "APÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BALBOA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BELÉN DE UMBRÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "DOSQUEBRADAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUÁTICA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA CELIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA VIRGINIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MARSELLA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MISTRATÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUEBLO RICO",
+          "neighborhoods": []
+        },
+        {
+          "name": "QUINCHÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA ROSA DE CABAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTUARIO",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "68",
+      "cities": [
+        {
+          "name": "BUCARAMANGA",
+          "neighborhoods": []
+        },
+        {
+          "name": "AGUADA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALBANIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARATOCA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BARBOSA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BARICHARA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BARRANCABERMEJA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BETULIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BOLÍVAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "CABRERA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CALIFORNIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAPITANEJO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CARCASÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CEPITÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CERRITO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHARALÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHARTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHIMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHIPATÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CIMITARRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CONCEPCIÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "CONFINES",
+          "neighborhoods": []
+        },
+        {
+          "name": "CONTRATACIÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "COROMORO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CURITÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL CARMEN DE CHUCURÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL GUACAMAYO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL PEÑÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL PLAYÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "ENCINO",
+          "neighborhoods": []
+        },
+        {
+          "name": "ENCISO",
+          "neighborhoods": []
+        },
+        {
+          "name": "FLORIÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "FLORIDABLANCA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GALÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "GÁMBITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GIRÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUACA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUADALUPE",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUAPOTÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUAVATÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "GÜEPSA",
+          "neighborhoods": []
+        },
+        {
+          "name": "HATO",
+          "neighborhoods": []
+        },
+        {
+          "name": "JESÚS MARÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "JORDÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA BELLEZA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LANDÁZURI",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA PAZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "LEBRIJA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LOS SANTOS",
+          "neighborhoods": []
+        },
+        {
+          "name": "MACARAVITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MÁLAGA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MATANZA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MOGOTES",
+          "neighborhoods": []
+        },
+        {
+          "name": "MOLAGAVITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "OCAMONTE",
+          "neighborhoods": []
+        },
+        {
+          "name": "OIBA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ONZAGA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PALMAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "PALMAS DEL SOCORRO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PÁRAMO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PIEDECUESTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PINCHOTE",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUENTE NACIONAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO PARRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO WILCHES",
+          "neighborhoods": []
+        },
+        {
+          "name": "RIONEGRO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SABANA DE TORRES",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN ANDRÉS",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN BENITO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN GIL",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JOAQUÍN",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JOSÉ DE MIRANDA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN MIGUEL",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN VICENTE DE CHUCURÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA BÁRBARA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA HELENA DEL OPÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "SIMACOTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SOCORRO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUAITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUCRE",
+          "neighborhoods": []
+        },
+        {
+          "name": "SURATÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "TONA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VALLE DE SAN JOSÉ",
+          "neighborhoods": []
+        },
+        {
+          "name": "VÉLEZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "VETAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLANUEVA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ZAPATOCA",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "70",
+      "cities": [
+        {
+          "name": "SINCELEJO",
+          "neighborhoods": []
+        },
+        {
+          "name": "BUENAVISTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAIMITO",
+          "neighborhoods": []
+        },
+        {
+          "name": "COLOSÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "COROZAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "COVEÑAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHALÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL ROBLE",
+          "neighborhoods": []
+        },
+        {
+          "name": "GALERAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUARANDA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA UNIÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "LOS PALMITOS",
+          "neighborhoods": []
+        },
+        {
+          "name": "MAJAGUAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "MORROA",
+          "neighborhoods": []
+        },
+        {
+          "name": "OVEJAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "PALMITO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAMPUÉS",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN BENITO ABAD",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JUAN DE BETULIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN MARCOS",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN ONOFRE",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN PEDRO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN LUIS DE SINCÉ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUCRE",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTIAGO DE TOLÚ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JOSÉ DE TOLUVIEJO",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "73",
+      "cities": [
+        {
+          "name": "IBAGUÉ",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALPUJARRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALVARADO",
+          "neighborhoods": []
+        },
+        {
+          "name": "AMBALEMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ANZOÁTEGUI",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARMERO",
+          "neighborhoods": []
+        },
+        {
+          "name": "ATACO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAJAMARCA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CARMEN DE APICALÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CASABIANCA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHAPARRAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "COELLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "COYAIMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CUNDAY",
+          "neighborhoods": []
+        },
+        {
+          "name": "DOLORES",
+          "neighborhoods": []
+        },
+        {
+          "name": "ESPINAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "FALAN",
+          "neighborhoods": []
+        },
+        {
+          "name": "FLANDES",
+          "neighborhoods": []
+        },
+        {
+          "name": "FRESNO",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUAMO",
+          "neighborhoods": []
+        },
+        {
+          "name": "HERVEO",
+          "neighborhoods": []
+        },
+        {
+          "name": "HONDA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ICONONZO",
+          "neighborhoods": []
+        },
+        {
+          "name": "LÉRIDA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LÍBANO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN SEBASTIÁN DE MARIQUITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MELGAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "MURILLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "NATAGAIMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ORTEGA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PALOCABILDO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PIEDRAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "PLANADAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "PRADO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PURIFICACIÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "RIOBLANCO",
+          "neighborhoods": []
+        },
+        {
+          "name": "RONCESVALLES",
+          "neighborhoods": []
+        },
+        {
+          "name": "ROVIRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SALDAÑA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN ANTONIO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN LUIS",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA ISABEL",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUÁREZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "VALLE DE SAN JUAN",
+          "neighborhoods": []
+        },
+        {
+          "name": "VENADILLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLAHERMOSA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLARRICA",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "76",
+      "cities": [
+        {
+          "name": "SANTIAGO DE CALI",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALCALÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "ANDALUCÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ANSERMANUEVO",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARGELIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BOLÍVAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "BUENAVENTURA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUADALAJARA DE BUGA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BUGALAGRANDE",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAICEDONIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CALIMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CANDELARIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CARTAGO",
+          "neighborhoods": []
+        },
+        {
+          "name": "DAGUA",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL ÁGUILA",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL CAIRO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL CERRITO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL DOVIO",
+          "neighborhoods": []
+        },
+        {
+          "name": "FLORIDA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GINEBRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUACARÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "JAMUNDÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA CUMBRE",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA UNIÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA VICTORIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "OBANDO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PALMIRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PRADERA",
+          "neighborhoods": []
+        },
+        {
+          "name": "RESTREPO",
+          "neighborhoods": []
+        },
+        {
+          "name": "RIOFRÍO",
+          "neighborhoods": []
+        },
+        {
+          "name": "ROLDANILLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN PEDRO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SEVILLA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TORO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TRUJILLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TULUÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "ULLOA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VERSALLES",
+          "neighborhoods": []
+        },
+        {
+          "name": "VIJES",
+          "neighborhoods": []
+        },
+        {
+          "name": "YOTOCO",
+          "neighborhoods": []
+        },
+        {
+          "name": "YUMBO",
+          "neighborhoods": []
+        },
+        {
+          "name": "ZARZAL",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "81",
+      "cities": [
+        {
+          "name": "ARAUCA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARAUQUITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CRAVO NORTE",
+          "neighborhoods": []
+        },
+        {
+          "name": "FORTUL",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO RONDÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "SARAVENA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TAME",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "85",
+      "cities": [
+        {
+          "name": "YOPAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "AGUAZUL",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHÁMEZA",
+          "neighborhoods": []
+        },
+        {
+          "name": "HATO COROZAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA SALINA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MANÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "MONTERREY",
+          "neighborhoods": []
+        },
+        {
+          "name": "NUNCHÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "OROCUÉ",
+          "neighborhoods": []
+        },
+        {
+          "name": "PAZ DE ARIPORO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PORE",
+          "neighborhoods": []
+        },
+        {
+          "name": "RECETOR",
+          "neighborhoods": []
+        },
+        {
+          "name": "SABANALARGA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SÁCAMA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN LUIS DE PALENQUE",
+          "neighborhoods": []
+        },
+        {
+          "name": "TÁMARA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TAURAMENA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TRINIDAD",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLANUEVA",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "86",
+      "cities": [
+        {
+          "name": "MOCOA",
+          "neighborhoods": []
+        },
+        {
+          "name": "COLÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "ORITO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO ASÍS",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO CAICEDO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO GUZMÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO LEGUÍZAMO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SIBUNDOY",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN FRANCISCO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN MIGUEL",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTIAGO",
+          "neighborhoods": []
+        },
+        {
+          "name": "VALLE DEL GUAMUEZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "VILLAGARZÓN",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "88",
+      "cities": [
+        {
+          "name": "SAN ANDRÉS",
+          "neighborhoods": []
+        },
+        {
+          "name": "PROVIDENCIA",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "91",
+      "cities": [
+        {
+          "name": "LETICIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL ENCANTO",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA CHORRERA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA PEDRERA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA VICTORIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MIRITÍ - PARANÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO ALEGRÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO ARICA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO NARIÑO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO SANTANDER",
+          "neighborhoods": []
+        },
+        {
+          "name": "TARAPACÁ",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "94",
+      "cities": [
+        {
+          "name": "INÍRIDA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BARRANCOMINAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN FELIPE",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO COLOMBIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA GUADALUPE",
+          "neighborhoods": []
+        },
+        {
+          "name": "CACAHUAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "PANA PANA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MORICHAL",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "95",
+      "cities": [
+        {
+          "name": "SAN JOSÉ DEL GUAVIARE",
+          "neighborhoods": []
+        },
+        {
+          "name": "CALAMAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL RETORNO",
+          "neighborhoods": []
+        },
+        {
+          "name": "MIRAFLORES",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "97",
+      "cities": [
+        {
+          "name": "MITÚ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CARURÚ",
+          "neighborhoods": []
+        },
+        {
+          "name": "PACOA",
+          "neighborhoods": []
+        },
+        {
+          "name": "TARAIRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PAPUNAHUA",
+          "neighborhoods": []
+        },
+        {
+          "name": "YAVARATÉ",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "99",
+      "cities": [
+        {
+          "name": "PUERTO CARREÑO",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA PRIMAVERA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA ROSALÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CUMARIBO",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "05",
+      "cities": [
+        {
+          "name": "MEDELLÍN",
+          "neighborhoods": []
+        },
+        {
+          "name": "ABEJORRAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "ABRIAQUÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "ALEJANDRÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "AMAGÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "AMALFI",
+          "neighborhoods": []
+        },
+        {
+          "name": "ANDES",
+          "neighborhoods": []
+        },
+        {
+          "name": "ANGELÓPOLIS",
+          "neighborhoods": []
+        },
+        {
+          "name": "ANGOSTURA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ANORÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA FÉ DE ANTIOQUIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ANZÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "APARTADÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARBOLETES",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARGELIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ARMENIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BARBOSA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BELMIRA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BELLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "BETANIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BETULIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CIUDAD BOLÍVAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "BRICEÑO",
+          "neighborhoods": []
+        },
+        {
+          "name": "BURITICÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CÁCERES",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAICEDO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CALDAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAMPAMENTO",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAÑASGORDAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "CARACOLÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CARAMANTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAREPA",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL CARMEN DE VIBORAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAROLINA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAUCASIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CHIGORODÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CISNEROS",
+          "neighborhoods": []
+        },
+        {
+          "name": "COCORNÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CONCEPCIÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "CONCORDIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "COPACABANA",
+          "neighborhoods": []
+        },
+        {
+          "name": "DABEIBA",
+          "neighborhoods": []
+        },
+        {
+          "name": "DONMATÍAS",
+          "neighborhoods": []
+        },
+        {
+          "name": "EBÉJICO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL BAGRE",
+          "neighborhoods": []
+        },
+        {
+          "name": "ENTRERRÍOS",
+          "neighborhoods": []
+        },
+        {
+          "name": "ENVIGADO",
+          "neighborhoods": []
+        },
+        {
+          "name": "FREDONIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "FRONTINO",
+          "neighborhoods": []
+        },
+        {
+          "name": "GIRALDO",
+          "neighborhoods": []
+        },
+        {
+          "name": "GIRARDOTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GÓMEZ PLATA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GRANADA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUADALUPE",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUARNE",
+          "neighborhoods": []
+        },
+        {
+          "name": "GUATAPÉ",
+          "neighborhoods": []
+        },
+        {
+          "name": "HELICONIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "HISPANIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "ITAGÜÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "ITUANGO",
+          "neighborhoods": []
+        },
+        {
+          "name": "JARDÍN",
+          "neighborhoods": []
+        },
+        {
+          "name": "JERICÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA CEJA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA ESTRELLA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA PINTADA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LA UNIÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "LIBORINA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MACEO",
+          "neighborhoods": []
+        },
+        {
+          "name": "MARINILLA",
+          "neighborhoods": []
+        },
+        {
+          "name": "MONTEBELLO",
+          "neighborhoods": []
+        },
+        {
+          "name": "MURINDÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "MUTATÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "NARIÑO",
+          "neighborhoods": []
+        },
+        {
+          "name": "NECOCLÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "NECHÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "OLAYA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PEÑOL",
+          "neighborhoods": []
+        },
+        {
+          "name": "PEQUE",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUEBLORRICO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO BERRÍO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO NARE",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO TRIUNFO",
+          "neighborhoods": []
+        },
+        {
+          "name": "REMEDIOS",
+          "neighborhoods": []
+        },
+        {
+          "name": "RETIRO",
+          "neighborhoods": []
+        },
+        {
+          "name": "RIONEGRO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SABANALARGA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SABANETA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SALGAR",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN ANDRÉS DE CUERQUÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN CARLOS",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN FRANCISCO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JERÓNIMO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JOSÉ DE LA MONTAÑA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN JUAN DE URABÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN LUIS",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN PEDRO DE LOS MILAGROS",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN PEDRO DE URABÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN RAFAEL",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN ROQUE",
+          "neighborhoods": []
+        },
+        {
+          "name": "SAN VICENTE FERRER",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA BÁRBARA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA ROSA DE OSOS",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTO DOMINGO",
+          "neighborhoods": []
+        },
+        {
+          "name": "EL SANTUARIO",
+          "neighborhoods": []
+        },
+        {
+          "name": "SEGOVIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SONSÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "SOPETRÁN",
+          "neighborhoods": []
+        },
+        {
+          "name": "TÁMESIS",
+          "neighborhoods": []
+        },
+        {
+          "name": "TARAZÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "TARSO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TITIRIBÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "TOLEDO",
+          "neighborhoods": []
+        },
+        {
+          "name": "TURBO",
+          "neighborhoods": []
+        },
+        {
+          "name": "URAMITA",
+          "neighborhoods": []
+        },
+        {
+          "name": "URRAO",
+          "neighborhoods": []
+        },
+        {
+          "name": "VALDIVIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VALPARAÍSO",
+          "neighborhoods": []
+        },
+        {
+          "name": "VEGACHÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "VENECIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "VIGÍA DEL FUERTE",
+          "neighborhoods": []
+        },
+        {
+          "name": "YALÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "YARUMAL",
+          "neighborhoods": []
+        },
+        {
+          "name": "YOLOMBÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "YONDÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "ZARAGOZA",
+          "neighborhoods": []
+        }
+      ]
+    },
+    {
+      "name": "08",
+      "cities": [
+        {
+          "name": "BARRANQUILLA",
+          "neighborhoods": []
+        },
+        {
+          "name": "BARANOA",
+          "neighborhoods": []
+        },
+        {
+          "name": "CAMPO DE LA CRUZ",
+          "neighborhoods": []
+        },
+        {
+          "name": "CANDELARIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "GALAPA",
+          "neighborhoods": []
+        },
+        {
+          "name": "JUAN DE ACOSTA",
+          "neighborhoods": []
+        },
+        {
+          "name": "LURUACO",
+          "neighborhoods": []
+        },
+        {
+          "name": "MALAMBO",
+          "neighborhoods": []
+        },
+        {
+          "name": "MANATÍ",
+          "neighborhoods": []
+        },
+        {
+          "name": "PALMAR DE VARELA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PIOJÓ",
+          "neighborhoods": []
+        },
+        {
+          "name": "POLONUEVO",
+          "neighborhoods": []
+        },
+        {
+          "name": "PONEDERA",
+          "neighborhoods": []
+        },
+        {
+          "name": "PUERTO COLOMBIA",
+          "neighborhoods": []
+        },
+        {
+          "name": "REPELÓN",
+          "neighborhoods": []
+        },
+        {
+          "name": "SABANAGRANDE",
+          "neighborhoods": []
+        },
+        {
+          "name": "SABANALARGA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTA LUCÍA",
+          "neighborhoods": []
+        },
+        {
+          "name": "SANTO TOMÁS",
+          "neighborhoods": []
+        },
+        {
+          "name": "SOLEDAD",
+          "neighborhoods": []
+        },
+        {
+          "name": "SUAN",
+          "neighborhoods": []
+        },
+        {
+          "name": "TUBARÁ",
+          "neighborhoods": []
+        },
+        {
+          "name": "USIACURÍ",
+          "neighborhoods": []
+        }
+      ]
+    }
+  ]
+}

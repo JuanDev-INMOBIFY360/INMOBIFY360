@@ -11,9 +11,9 @@ import { authMiddleware } from "../../middleware/auth.middleware.js";
 
 
 const router = Router();
-router.get("/",authMiddleware, authorize("departament", "READ"), getAllDepartaments);
-router.get("/:id",authMiddleware, authorize("departament", "READ"), authorize, getDepartamentController);
-router.post("/",authMiddleware, authorize("departament", "CREATE"),authorize, createDepartamentController);
-router.put("/:id", authMiddleware, authorize("departament", "DELETE"),authorize, updateDepartamentController);
-router.delete("/:id", authMiddleware, authorize("departament", "UPDATE"), authorize, deleteDepartamentController);
+router.get("/", getAllDepartaments);
+router.get("/:id",authMiddleware, authorize("department", "READ"), authorize, getDepartamentController);
+router.post("/",authMiddleware, authorize("department", "CREATE"),authorize, createDepartamentController);
+router.put("/:id", authMiddleware, authorize("department", "DELETE"),authorize, updateDepartamentController);
+router.delete("/:id", authMiddleware, authorize("department", "UPDATE"), authorize, deleteDepartamentController);
 export default router;

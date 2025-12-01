@@ -2,14 +2,32 @@ import prisma from "../../config/db.js";
 
 export const getNeighborhoods = async () => {
   return await prisma.neighborhood.findMany({
-    include: {country: true, city: true, departament: true },
+    include: {
+      city: {
+        include: {
+          department: {
+            include: { country: true }
+          }
+        }
+      },
+      properties: true
+    },
   });
 }
 
 export const getNeighborhoodById = async (id) => {
   return await prisma.neighborhood.findUnique({
     where: { id: id },
-    include: {country: true, city: true, departament: true },
+    include: {
+      city: {
+        include: {
+          department: {
+            include: { country: true }
+          }
+        }
+      },
+      properties: true
+    },
   });
 }
 

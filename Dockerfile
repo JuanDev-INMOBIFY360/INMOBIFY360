@@ -1,27 +1,20 @@
-# 🧩 1️⃣ Etapa de construcción
-FROM node:20 AS build
+FROM node:20
 WORKDIR /app
 
-# Copiamos los archivos de dependencias
+# Copiamos package files
 COPY package*.json ./
+
+# Instalamos dependencias
 RUN npm install
-COPY . .
+
+# Copiamos prisma schema
+COPY prisma ./prisma
+
+# Generamos Prisma Client
 RUN npx prisma generate
 
-# ------------------------------------------------------------
-FROM node:20-slim AS production
-WORKDIR /app
-
-# Copiamos solo lo necesario desde la etapa anterior
-COPY --from=build /app/package*.json ./
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/prisma ./prisma
-COPY --from=build /app/src ./src
-
-# ✅ No copiamos .env, se inyecta desde docker-compose
-
-# Instalamos solo dependencias de producción (por si acaso)
-RUN npm install --omit=dev
+# Copiamos el código (aunque el volumen lo sobrescribirá en dev)
+COPY . .
 
 EXPOSE 5000
 CMD ["npm", "run", "dev"]

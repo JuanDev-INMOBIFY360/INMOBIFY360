@@ -11,7 +11,7 @@ import { authMiddleware } from "../../middleware/auth.middleware.js";
 
 const router = express.Router();
 
-router.get("/",authMiddleware, authorize("country", "READ"), getCountriesController);
+router.get("/", getCountriesController);
 router.get("/:id",authMiddleware, authorize("country", "READ"), getCountryByIdController);
 router.post("/",authMiddleware, authorize("country", "CREATE"), createCountryController);
 router.put("/:id",authMiddleware, authorize("country", "UPDATE"), updateCountryController);

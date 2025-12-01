@@ -15,6 +15,7 @@ import userRoutes from "./modules/user/user.routes.js";
 import propertyRoutes from "./modules/property/property.routes.js";
 import authRoutes from "./modules/auth/auth.route.js";
 import typeRoutes from "./modules/tyeproperty/type.route.js";
+
 dotenv.config();
 
 class App {
@@ -25,29 +26,65 @@ class App {
   }
 
   middlewares() {
+    // JSON parser
     this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: true }));
+    
+    // Logger
     this.app.use(morgan("dev"));
-    this.app.use(cors());
-    this.app.use(helmet());
+    
+    // CORS configurado
+    const corsOptions = {
+      origin: process.env.CORS_ORIGIN || "http://localhost:5173",
+      credentials: true,
+      optionsSuccessStatus: 200,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization']
+    };
+    this.app.use(cors(corsOptions));
+    
+    // Security headers
+    this.app.use(helmet({
+      crossOriginResourcePolicy: { policy: "cross-origin" }
+    }));
   }
 
   routes() {
-    this.app.use("/countries", countryRoutes);
-    this.app.use("/departaments", departamentRoutes);
-    this.app.use("/cities", citiesRoutes);
-    this.app.use("/neighborhoods", neighborhoodRoutes);
-    this.app.use("/roles", rolesRoutes);
-    this.app.use("/permissions", permissionRoutes);
-    this.app.use("/privileges", privilegesRoutes);
-    this.app.use("/owners", ownerRoutes);
-    this.app.use("/users", userRoutes);
-    this.app.use("/properties", propertyRoutes);
-    this.app.use("/auth", authRoutes);
-    this.app.use("/types", typeRoutes);
-
-  
+    // Health check
     this.app.get("/", (req, res) => {
-      res.json({ message: "Bienvenido a Inmobify360 API" });
+      res.json({ 
+        message: "Bienvenido a Inmobify360 API",
+        status: "OK",
+        timestamp: new Date().toISOString()
+      });
+    });
+
+    this.app.use("/api/countries", countryRoutes);
+    this.app.use("/api/departaments", departamentRoutes);
+    this.app.use("/api/cities", citiesRoutes);
+    this.app.use("/api/neighborhoods", neighborhoodRoutes);
+    this.app.use("/api/roles", rolesRoutes);
+    this.app.use("/api/permissions", permissionRoutes);
+    this.app.use("/api/privileges", privilegesRoutes);
+    this.app.use("/api/owners", ownerRoutes);
+    this.app.use("/api/users", userRoutes);
+    this.app.use("/api/properties", propertyRoutes);
+    this.app.use("/api/auth", authRoutes);
+    this.app.use("/api/types", typeRoutes);
+
+    this.app.use((req, res) => {
+      res.status(404).json({ 
+        error: "Ruta no encontrada",
+        path: req.path 
+      });
+    });
+
+    this.app.use((err, req, res, next) => {
+      console.error(err.stack);
+      res.status(err.status || 500).json({
+        error: err.message || "Error interno del servidor",
+        ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
+      });
     });
   }
 

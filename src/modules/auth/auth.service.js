@@ -25,6 +25,24 @@ export const loginUser = async ({ email, password }) => {
   return { user, token };
 };
 
+export const logoutUser = async (userId) => {
+  // Marca el usuario como desconectado (opcional, según tu lógica de negocio)
+  // Aquí podrías registrar el logout, limpiar tokens, etc.
+  // Por ahora simplemente retornamos true indicando que el logout fue exitoso
+  // El cliente debe eliminar el token del localStorage/sessionStorage
+  
+  // Opcional: Si quieres registrar el logout en BD, puedes guardar un timestamp
+  // const user = await prisma.user.update({
+  //   where: { id: userId },
+  //   data: { lastLogoutAt: new Date() },
+  // });
+  
+  return {
+    success: true,
+    message: "Sesión cerrada correctamente",
+  };
+};
+
 export const getProfileService = async (userId) => {
   const user = await prisma.user.findUnique({
     where: { id: userId },

@@ -11,7 +11,7 @@ import { authMiddleware } from "../../middleware/auth.middleware.js";
 
 const router = Router();
 
-router.get("/", authMiddleware, authorize("property", "READ"), getAllPropertiesController);
+router.get("/", getAllPropertiesController);
 router.get("/:id", authMiddleware, authorize("property", "READ"), getPropertyByIdController);
 router.post("/", authMiddleware, authorize("property", "CREATE"), createPropertyController);
 router.put("/:id", authMiddleware, authorize("property", "UPDATE"), updatePropertyController);

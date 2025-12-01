@@ -1,6 +1,6 @@
 generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = ["native", "debian-openssl-3.0.x", "debian-openssl-1.1.x"]
+    provider      = "prisma-client-js"
+    binaryTargets = ["native", "debian-openssl-3.0.x", "debian-openssl-1.1.x", "windows"]
 }
 
 datasource db {
@@ -117,16 +117,27 @@ model TypeProperty {
 
 model Property {
     id             Int           @id @default(autoincrement())
+    titulo         String?       // "Apartamento moderno en El Poblado"
+    descripcion    String?       @db.Text // Descripción larga
     precio         Float
     area           Float?
+    areaPrivada    Float?        // Área privada (diferente del área total)
     habitaciones   Int?
     banos          Int?
     parqueaderos   Int?
+    estrato        Int?          // Estrato socioeconómico (1-6 en Colombia)
+    piso           Int?          // Número de piso
+    antiguedad     Int?          // Años de antigüedad
+    administracion Float?        // Costo de administración mensual
+    amenidades     Json?         
     direccion      String
     latitud        Float?
     longitud       Float?
-    imagenes       Json?
+    imagenes       Json?         // [{url: "", descripcion: ""}]
+    videoUrl       String?       // URL del video tour
+    tourVirtual    String?       // URL del tour 360°    
     estado         PropertyState @default(AVAILABLE)
+    destacada      Boolean       @default(false) // Para propiedades destacadas
     owner          Owner         @relation(fields: [ownerId], references: [id])
     ownerId        Int
     country        Country       @relation(fields: [countryId], references: [id])
@@ -139,6 +150,8 @@ model Property {
     neighborhoodId Int
     typeProperty   TypeProperty  @relation(fields: [typePropertyId], references: [id])
     typePropertyId Int
+    
+    // Timestamps
     createdAt      DateTime      @default(now())
     updatedAt      DateTime      @updatedAt
 }
