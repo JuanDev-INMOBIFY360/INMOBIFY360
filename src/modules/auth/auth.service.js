@@ -8,7 +8,17 @@ dotenv.config();
 export const loginUser = async ({ email, password }) => {
   const user = await prisma.user.findUnique({
     where: { email },
-    include: { role: true },
+    include: { 
+      role: {
+        include: {
+          permissions: {
+            include: {
+              privileges: true
+            }
+          }
+        }
+      }
+    },
   });
   if (!user) {
     throw new Error("Usuario no encontrado");
@@ -17,12 +27,28 @@ export const loginUser = async ({ email, password }) => {
   if (!validPassword) {
     throw new Error("Contraseña incorrecta");
   }
+  
+  // Extraer nombres de módulos a los que tiene acceso
+  const modules = user.role?.permissions?.map(p => p.name) || [];
+  
   const token = generateToken({
     id: user.id,
     email: user.email,
     role: user.role?.name,
+    modules: modules,
+    permissions: user.role?.permissions || []
   });
-  return { user, token };
+  
+  return { 
+    user: {
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      role: user.role?.name,
+      modules: modules
+    }, 
+    token 
+  };
 };
 
 export const logoutUser = async (userId) => {
@@ -46,10 +72,22 @@ export const logoutUser = async (userId) => {
 export const getProfileService = async (userId) => {
   const user = await prisma.user.findUnique({
     where: { id: userId },
-    include: { role: true },
+    include: { 
+      role: {
+        include: {
+          permissions: {
+            include: {
+              privileges: true
+            }
+          }
+        }
+      }
+    },
   });
 
   if (!user) throw new Error("Usuario no encontrado");
+
+  const modules = user.role?.permissions?.map(p => p.name) || [];
 
   return {
     id: user.id,
@@ -57,6 +95,8 @@ export const getProfileService = async (userId) => {
     email: user.email,
     role: user.role?.name,
     status: user.status,
+    modules: modules,
+    permissions: user.role?.permissions || []
   };
 };
 
