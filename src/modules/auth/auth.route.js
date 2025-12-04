@@ -10,7 +10,7 @@ import { authorize } from "../../middleware/authorize.middleware.js";
 const router = Router();
 
 router.post("/login", LoginController);
-router.get("/profile", authMiddleware, authorize("users", "READ"), getProfile);
-router.put("/profile", authMiddleware, authorize("users", "UPDATE"), updateProfile);
+router.get("/profile", authMiddleware, authorize("user", "READ"), getProfile);
+router.put("/profile", authMiddleware, authorize("user", "UPDATE"), updateProfile);
 
 export default router;

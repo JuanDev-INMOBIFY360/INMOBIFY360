@@ -15,6 +15,7 @@ import userRoutes from "./modules/user/user.routes.js";
 import propertyRoutes from "./modules/property/property.routes.js";
 import authRoutes from "./modules/auth/auth.route.js";
 import typeRoutes from "./modules/tyeproperty/type.route.js";
+import cloudinaryRoutes from "./modules/cloudinary/cloudinary.routes.js";
 
 dotenv.config();
 
@@ -70,6 +71,7 @@ class App {
     this.app.use("/api/users", userRoutes);
     this.app.use("/api/properties", propertyRoutes);
     this.app.use("/api/auth", authRoutes);
+    this.app.use('/api/cloudinary', cloudinaryRoutes);
     this.app.use("/api/types", typeRoutes);
 
     this.app.use((req, res) => {

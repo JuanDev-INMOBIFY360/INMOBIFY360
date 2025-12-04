@@ -9,7 +9,7 @@ services:
       MYSQL_USER: inmobify
       MYSQL_PASSWORD: inmobify123
     ports:
-      - "3307:3306" 
+      - "3306:3306" 
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
       interval: 10s
@@ -36,7 +36,7 @@ services:
     command: >
       sh -c "npx prisma generate &&
              npx prisma migrate deploy &&
-             npx prisma db seed &&
+             npx prisma db seed || true &&
              npm run dev"
 
 volumes:

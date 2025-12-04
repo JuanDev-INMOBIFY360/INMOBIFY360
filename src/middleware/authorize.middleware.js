@@ -14,7 +14,6 @@ export const authorize = (moduleName, action) => {
       }
 
       // ✅ Cargar solo permisos del módulo actual
-      console.log("Buscando usuario con permisos filtrados...");
       const user = await prisma.user.findUnique({
         where: { id: userId },
         include: {
@@ -30,7 +29,6 @@ export const authorize = (moduleName, action) => {
           },
         },
       });
-      console.log("Usuario encontrado:", user?.id);
 
       if (!user || !user.role) {
         return res.status(403).json({ message: "No tienes un rol asignado" });

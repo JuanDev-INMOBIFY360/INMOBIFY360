@@ -34,9 +34,9 @@ export const loginUser = async ({ email, password }) => {
   const token = generateToken({
     id: user.id,
     email: user.email,
+    name: user.name,
     role: user.role?.name,
-    modules: modules,
-    permissions: user.role?.permissions || []
+    modules: modules
   });
   
   return { 
