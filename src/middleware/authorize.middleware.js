@@ -1,4 +1,4 @@
-import prisma from "../config/db.js";
+import prisma from '../config/db.js';
 
 /**
  * Middleware de autorización basado en Roles → Permissions → Privileges.
@@ -10,7 +10,7 @@ export const authorize = (moduleName, action) => {
     try {
       const userId = req.user?.id;
       if (!userId) {
-        return res.status(401).json({ message: "Usuario no autenticado" });
+        return res.status(401).json({ message: 'Usuario no autenticado' });
       }
 
       // ✅ Cargar solo permisos del módulo actual
@@ -31,7 +31,7 @@ export const authorize = (moduleName, action) => {
       });
 
       if (!user || !user.role) {
-        return res.status(403).json({ message: "No tienes un rol asignado" });
+        return res.status(403).json({ message: 'No tienes un rol asignado' });
       }
 
       const permission = user.role.permissions[0]; // solo uno, ya viene filtrado
@@ -54,9 +54,9 @@ export const authorize = (moduleName, action) => {
 
       next();
     } catch (error) {
-      console.error("Error en authorize middleware:", error);
+      console.error('Error en authorize middleware:', error);
       return res.status(500).json({
-        message: "Error interno en la autorización",
+        message: 'Error interno en la autorización',
         error: error.message,
       });
     }

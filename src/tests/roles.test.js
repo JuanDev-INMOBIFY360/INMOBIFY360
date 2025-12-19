@@ -1,14 +1,14 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
-describe("Roles CRUD", () => {
+describe('Roles CRUD', () => {
   let role;
 
-  it("Crea un rol", async () => {
+  it('Crea un rol', async () => {
     role = await prisma.roles.create({
-      data: { name: "Administrador_" + Date.now() }, 
+      data: { name: 'Administrador_' + Date.now() },
     });
-    expect(role.name).toContain("Administrador_");
+    expect(role.name).toContain('Administrador_');
   });
 
   afterAll(async () => {

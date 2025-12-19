@@ -4,8 +4,7 @@ import {
   createTypeProperty,
   updateTypeProperty,
   deleteTypeProperty,
-} from "./type.repository.js";
-
+} from './type.repository.js';
 
 export const fetchTypeProperties = async () => {
   return await getTypeProperties();

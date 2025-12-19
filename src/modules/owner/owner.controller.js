@@ -1,5 +1,11 @@
-import { fetchOwners,fetchOwnerById,addOwner,modifyOwner,removeOwner } from "./owner.service.js";
-import { validationResult } from "express-validator";
+import {
+  fetchOwners,
+  fetchOwnerById,
+  addOwner,
+  modifyOwner,
+  removeOwner,
+} from './owner.service.js';
+import { validationResult } from 'express-validator';
 
 export const getAllOwnersController = async (req, res) => {
   try {
@@ -10,7 +16,7 @@ export const getAllOwnersController = async (req, res) => {
   }
 };
 export const getOwnerByIdController = async (req, res) => {
- const errors = validationResult(req);
+  const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
@@ -18,15 +24,15 @@ export const getOwnerByIdController = async (req, res) => {
     const owner = await fetchOwnerById(req.params.id);
     res.status(200).json(owner);
   } catch (error) {
-     res.status(500).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
 export const createOwnerController = async (req, res) => {
   const errors = validationResult(req);
-    if (!errors.isEmpty()) { 
-        return res.status(400).json({ errors: errors.array() });
-    }
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
   try {
     const newOwner = await addOwner(req.body);
     res.status(201).json(newOwner);
@@ -37,10 +43,10 @@ export const createOwnerController = async (req, res) => {
 
 export const updateOwnerController = async (req, res) => {
   const errors = validationResult(req);
-    if (!errors.isEmpty()) { 
-        return res.status(400).json({ errors: errors.array() });
-    };
-    try {
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  try {
     const updatedOwner = await modifyOwner(req.params.id, req.body);
     res.status(200).json(updatedOwner);
   } catch (error) {
@@ -50,12 +56,12 @@ export const updateOwnerController = async (req, res) => {
 
 export const deleteOwnerController = async (req, res) => {
   const errors = validationResult(req);
-    if (!errors.isEmpty()) { 
-        return res.status(400).json({ errors: errors.array() });
-    };
-    try {
-    const removeowener =await removeOwner(req.params.id);
-    res.status(204).json(removeowener,{ message: "Owner deleted successfully" });
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  try {
+    const removeowener = await removeOwner(req.params.id);
+    res.status(204).json(removeowener, { message: 'Owner deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

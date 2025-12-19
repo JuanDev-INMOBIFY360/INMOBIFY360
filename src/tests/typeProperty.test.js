@@ -1,15 +1,15 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
-describe("TypeProperty CRUD", () => {
+describe('TypeProperty CRUD', () => {
   afterAll(async () => {
     await prisma.$disconnect();
   });
 
-  it("Crea un tipo de propiedad", async () => {
+  it('Crea un tipo de propiedad', async () => {
     const type = await prisma.typeProperty.create({
-      data: { name: "Casa2" },
+      data: { name: 'Casa2' },
     });
-    expect(type).toHaveProperty("id");
+    expect(type).toHaveProperty('id');
   });
 });

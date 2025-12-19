@@ -4,8 +4,8 @@ import {
   addPrivilege,
   modifyPrivilege,
   removePrivilege,
-} from "./privileges.service.js";
-import { validationResult } from "express-validator";
+} from './privileges.service.js';
+import { validationResult } from 'express-validator';
 
 export const getAllPrivilegesController = async (req, res) => {
   const errors = validationResult(req);
@@ -45,7 +45,6 @@ export const createPrivilegeController = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 
 export const updatePrivilegeController = async (req, res) => {
   const errors = validationResult(req);

@@ -33,8 +33,14 @@ export const uploadPropertyImageController = async (req, res) => {
     const existingImages = property.imagenes || [];
 
     // Agregar nuevo objeto de imagen (puedes ajustar la estructura)
-    const newImage = { url: result.secure_url, public_id: result.public_id, resource_type: result.resource_type };
-    const updatedImages = Array.isArray(existingImages) ? [...existingImages, newImage] : [newImage];
+    const newImage = {
+      url: result.secure_url,
+      public_id: result.public_id,
+      resource_type: result.resource_type,
+    };
+    const updatedImages = Array.isArray(existingImages)
+      ? [...existingImages, newImage]
+      : [newImage];
 
     const updatedProperty = await modifyProperty(propertyId, { imagenes: updatedImages });
 
@@ -51,17 +57,24 @@ export const addImageMetadataController = async (req, res) => {
     const propertyId = req.params.id;
     const { url, public_id, resource_type } = req.body;
 
-    if (!url || !public_id) return res.status(400).json({ message: 'url and public_id are required' });
+    if (!url || !public_id)
+      return res.status(400).json({ message: 'url and public_id are required' });
 
     const property = await fetchPropertyById(propertyId);
     if (!property) return res.status(404).json({ message: 'Property not found' });
 
     const existingImages = property.imagenes || [];
     const newImage = { url, public_id, resource_type };
-    const updatedImages = Array.isArray(existingImages) ? [...existingImages, newImage] : [newImage];
+    const updatedImages = Array.isArray(existingImages)
+      ? [...existingImages, newImage]
+      : [newImage];
 
     const updatedProperty = await modifyProperty(propertyId, { imagenes: updatedImages });
-    return res.json({ message: 'Image metadata added', image: newImage, property: updatedProperty });
+    return res.json({
+      message: 'Image metadata added',
+      image: newImage,
+      property: updatedProperty,
+    });
   } catch (err) {
     console.error('Error adding image metadata:', err);
     return res.status(500).json({ message: 'Error adding image metadata', error: err.message });
@@ -83,7 +96,7 @@ export const removeImageController = async (req, res) => {
     if (!property) return res.status(404).json({ message: 'Property not found' });
 
     const existingImages = property.imagenes || [];
-    const updatedImages = existingImages.filter(img => img.public_id !== public_id);
+    const updatedImages = existingImages.filter((img) => img.public_id !== public_id);
 
     const updatedProperty = await modifyProperty(propertyId, { imagenes: updatedImages });
 

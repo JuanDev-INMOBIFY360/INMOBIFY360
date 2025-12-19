@@ -1,9 +1,9 @@
-import prisma from "../../config/db.js";
+import prisma from '../../config/db.js';
 
 export const getOwners = async () => {
   return await prisma.owner.findMany({
     include: {
-      properties: true, 
+      properties: true,
     },
   });
 };

@@ -1,11 +1,11 @@
-import prisma from "../../config/db.js";
+import prisma from '../../config/db.js';
 
 export const getCountries = async () => {
-  return await prisma.country.findMany(); 
+  return await prisma.country.findMany();
 };
 
 export const getCountryById = async (id) => {
-  return await prisma.country.findUnique({ 
+  return await prisma.country.findUnique({
     where: { id: id },
   });
 };
@@ -24,7 +24,7 @@ export const updateCountry = async (id, data) => {
 };
 
 export const deleteCountry = async (id) => {
-  return await prisma.country.delete({ 
+  return await prisma.country.delete({
     where: { id: id },
   });
 };

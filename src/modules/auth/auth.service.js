@@ -1,53 +1,53 @@
-import prisma from "../../config/db.js";
-import { generateToken } from "../../utils/jwt.js";
-import bcrypt from "bcryptjs";
-import dotenv from "dotenv";
+import prisma from '../../config/db.js';
+import { generateToken } from '../../utils/jwt.js';
+import bcrypt from 'bcryptjs';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
 export const loginUser = async ({ email, password }) => {
   const user = await prisma.user.findUnique({
     where: { email },
-    include: { 
+    include: {
       role: {
         include: {
           permissions: {
             include: {
-              privileges: true
-            }
-          }
-        }
-      }
+              privileges: true,
+            },
+          },
+        },
+      },
     },
   });
   if (!user) {
-    throw new Error("Usuario no encontrado");
+    throw new Error('Usuario no encontrado');
   }
   const validPassword = await bcrypt.compare(password, user.password);
   if (!validPassword) {
-    throw new Error("Contraseña incorrecta");
+    throw new Error('Contraseña incorrecta');
   }
-  
+
   // Extraer nombres de módulos a los que tiene acceso
-  const modules = user.role?.permissions?.map(p => p.name) || [];
-  
+  const modules = user.role?.permissions?.map((p) => p.name) || [];
+
   const token = generateToken({
     id: user.id,
     email: user.email,
     name: user.name,
     role: user.role?.name,
-    modules: modules
+    modules: modules,
   });
-  
-  return { 
+
+  return {
     user: {
       id: user.id,
       email: user.email,
       name: user.name,
       role: user.role?.name,
-      modules: modules
-    }, 
-    token 
+      modules: modules,
+    },
+    token,
   };
 };
 
@@ -56,38 +56,38 @@ export const logoutUser = async (userId) => {
   // Aquí podrías registrar el logout, limpiar tokens, etc.
   // Por ahora simplemente retornamos true indicando que el logout fue exitoso
   // El cliente debe eliminar el token del localStorage/sessionStorage
-  
+
   // Opcional: Si quieres registrar el logout en BD, puedes guardar un timestamp
   // const user = await prisma.user.update({
   //   where: { id: userId },
   //   data: { lastLogoutAt: new Date() },
   // });
-  
+
   return {
     success: true,
-    message: "Sesión cerrada correctamente",
+    message: 'Sesión cerrada correctamente',
   };
 };
 
 export const getProfileService = async (userId) => {
   const user = await prisma.user.findUnique({
     where: { id: userId },
-    include: { 
+    include: {
       role: {
         include: {
           permissions: {
             include: {
-              privileges: true
-            }
-          }
-        }
-      }
+              privileges: true,
+            },
+          },
+        },
+      },
     },
   });
 
-  if (!user) throw new Error("Usuario no encontrado");
+  if (!user) throw new Error('Usuario no encontrado');
 
-  const modules = user.role?.permissions?.map(p => p.name) || [];
+  const modules = user.role?.permissions?.map((p) => p.name) || [];
 
   return {
     id: user.id,
@@ -96,10 +96,9 @@ export const getProfileService = async (userId) => {
     role: user.role?.name,
     status: user.status,
     modules: modules,
-    permissions: user.role?.permissions || []
+    permissions: user.role?.permissions || [],
   };
 };
-
 
 export const updateProfileService = async (userId, data) => {
   const { name, password } = data;

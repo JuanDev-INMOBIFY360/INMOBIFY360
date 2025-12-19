@@ -1,15 +1,15 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
-describe("Owner CRUD", () => {
+describe('Owner CRUD', () => {
   afterAll(async () => {
     await prisma.$disconnect();
   });
 
-  it("Crea un propietario", async () => {
+  it('Crea un propietario', async () => {
     const owner = await prisma.owner.create({
-      data: { name: "Juan Pérez2", email: "juanp2@example.com" },
+      data: { name: 'Juan Pérez2', email: 'juanp2@example.com' },
     });
-    expect(owner).toHaveProperty("id");
+    expect(owner).toHaveProperty('id');
   });
 });

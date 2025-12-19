@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
-describe("Property CRUD", () => {
+describe('Property CRUD', () => {
   afterAll(async () => {
     await prisma.$disconnect();
   });
@@ -9,27 +9,27 @@ describe("Property CRUD", () => {
   let owner, country, department, city, neighborhood, type;
 
   beforeAll(async () => {
-    country = await prisma.country.create({ data: { name: "México" } });
+    country = await prisma.country.create({ data: { name: 'México' } });
     department = await prisma.department.create({
-      data: { name: "CDMX", countryId: country.id },
+      data: { name: 'CDMX', countryId: country.id },
     });
     city = await prisma.city.create({
-      data: { name: "Coyoacán", departmentId: department.id },
+      data: { name: 'Coyoacán', departmentId: department.id },
     });
     neighborhood = await prisma.neighborhood.create({
-      data: { name: "Del Carmen", cityId: city.id },
+      data: { name: 'Del Carmen', cityId: city.id },
     });
-    type = await prisma.typeProperty.create({ data: { name: "Apartamento2" } });
+    type = await prisma.typeProperty.create({ data: { name: 'Apartamento2' } });
     owner = await prisma.owner.create({
-      data: { name: "Carlos Ramírez", email: "carlos@example.com" },
+      data: { name: 'Carlos Ramírez', email: 'carlos@example.com' },
     });
   });
 
-  it("Crea una propiedad", async () => {
+  it('Crea una propiedad', async () => {
     const property = await prisma.property.create({
       data: {
         precio: 150000,
-        direccion: "Calle 123 #45-67",
+        direccion: 'Calle 123 #45-67',
         ownerId: owner.id,
         countryId: country.id,
         departmentId: department.id,
@@ -38,6 +38,6 @@ describe("Property CRUD", () => {
         typePropertyId: type.id,
       },
     });
-    expect(property).toHaveProperty("id");
+    expect(property).toHaveProperty('id');
   });
 });

@@ -1,4 +1,10 @@
-import {getProperties, getPropertyById, createProperty, updateProperty, deleteProperty} from './property.repository.js';
+import {
+  getProperties,
+  getPropertyById,
+  createProperty,
+  updateProperty,
+  deleteProperty,
+} from './property.repository.js';
 
 export const fetchAllProperties = async () => {
   return await getProperties();
@@ -14,4 +20,4 @@ export const modifyProperty = async (id, data) => {
 };
 export const removeProperty = async (id) => {
   return await deleteProperty(id);
-};  
+};

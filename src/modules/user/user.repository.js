@@ -1,4 +1,4 @@
-import prisma from "../../config/db.js";
+import prisma from '../../config/db.js';
 
 export const getUsers = async () => {
   return await prisma.user.findMany({
@@ -7,8 +7,8 @@ export const getUsers = async () => {
       name: true,
       email: true,
       status: true,
-      role: { select: { id: true, name: true } }
-    }
+      role: { select: { id: true, name: true } },
+    },
   });
 };
 
@@ -20,10 +20,10 @@ export const getUserById = async (id) => {
       name: true,
       email: true,
       status: true,
-      role: { select: { id: true, name: true } }
-    }
+      role: { select: { id: true, name: true } },
+    },
   });
-}
+};
 
 export const createUser = async (data) => {
   return await prisma.user.create({ data });

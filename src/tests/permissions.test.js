@@ -1,20 +1,20 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
-describe("Permissions CRUD", () => {
+describe('Permissions CRUD', () => {
   let role, permission;
 
   beforeAll(async () => {
     role = await prisma.roles.create({
-      data: { name: "Tester_" + Date.now() }, // único
+      data: { name: 'Tester_' + Date.now() }, // único
     });
   });
 
-  it("Crea un permiso asociado a un rol", async () => {
+  it('Crea un permiso asociado a un rol', async () => {
     permission = await prisma.permissions.create({
-      data: { name: "ManageUsers_" + Date.now(), roleId: role.id },
+      data: { name: 'ManageUsers_' + Date.now(), roleId: role.id },
     });
-    expect(permission.name).toContain("ManageUsers_");
+    expect(permission.name).toContain('ManageUsers_');
     expect(permission.roleId).toBe(role.id);
   });
 

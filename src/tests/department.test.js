@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
-describe("Department CRUD", () => {
+describe('Department CRUD', () => {
   afterAll(async () => {
     await prisma.$disconnect();
   });
@@ -9,13 +9,13 @@ describe("Department CRUD", () => {
   let country;
 
   beforeAll(async () => {
-    country = await prisma.country.create({ data: { name: "Perú2" } });
+    country = await prisma.country.create({ data: { name: 'Perú2' } });
   });
 
-  it("Crea un departamento", async () => {
+  it('Crea un departamento', async () => {
     const department = await prisma.department.create({
-      data: { name: "Lima2", countryId: country.id },
+      data: { name: 'Lima2', countryId: country.id },
     });
-    expect(department.name).toBe("Lima2");
+    expect(department.name).toBe('Lima2');
   });
 });

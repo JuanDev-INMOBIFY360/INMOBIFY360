@@ -9,10 +9,16 @@ const OUTPUT_FILE = 'prisma/divipola.json';
 const API_URL = 'https://www.datos.gov.co/resource/gdxc-w37w.json?$limit=50000';
 
 function detectFields(sample) {
-  const keys = Object.keys(sample).map(k => k.toLowerCase());
-  const deptKey = Object.keys(sample).find(k => /depart|depto|dpto|departamento/.test(k.toLowerCase()));
-  const cityKey = Object.keys(sample).find(k => /municip|ciudad|municipio|nom_mpio/.test(k.toLowerCase()));
-  const neighborhoodKey = Object.keys(sample).find(k => /centro|poblado|barrio|localidad|zona/.test(k.toLowerCase()));
+  const keys = Object.keys(sample).map((k) => k.toLowerCase());
+  const deptKey = Object.keys(sample).find((k) =>
+    /depart|depto|dpto|departamento/.test(k.toLowerCase())
+  );
+  const cityKey = Object.keys(sample).find((k) =>
+    /municip|ciudad|municipio|nom_mpio/.test(k.toLowerCase())
+  );
+  const neighborhoodKey = Object.keys(sample).find((k) =>
+    /centro|poblado|barrio|localidad|zona/.test(k.toLowerCase())
+  );
   return { deptKey, cityKey, neighborhoodKey };
 }
 
@@ -20,7 +26,8 @@ async function fetchDivipola() {
   const res = await fetch(API_URL);
   if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
   const json = await res.json();
-  if (!Array.isArray(json) || json.length === 0) throw new Error('Respuesta vacía desde la API DIVIPOLA');
+  if (!Array.isArray(json) || json.length === 0)
+    throw new Error('Respuesta vacía desde la API DIVIPOLA');
 
   const sample = json[0];
   let { deptKey, cityKey, neighborhoodKey } = detectFields(sample);
@@ -32,19 +39,24 @@ async function fetchDivipola() {
   for (const row of json) {
     const deptName = row[deptKey] ? String(row[deptKey]).trim() : null;
     const cityName = row[cityKey] ? String(row[cityKey]).trim() : null;
-    const neighborhoodName = neighborhoodKey && row[neighborhoodKey] ? String(row[neighborhoodKey]).trim() : null;
+    const neighborhoodName =
+      neighborhoodKey && row[neighborhoodKey] ? String(row[neighborhoodKey]).trim() : null;
     if (!deptName || !cityName) continue;
     if (!departments[deptName]) departments[deptName] = { name: deptName, cities: {} };
-    if (!departments[deptName].cities[cityName]) departments[deptName].cities[cityName] = { name: cityName, neighborhoods: [] };
+    if (!departments[deptName].cities[cityName])
+      departments[deptName].cities[cityName] = { name: cityName, neighborhoods: [] };
     if (neighborhoodName) {
       const arr = departments[deptName].cities[cityName].neighborhoods;
-      if (!arr.find(n => n.name === neighborhoodName)) arr.push({ name: neighborhoodName });
+      if (!arr.find((n) => n.name === neighborhoodName)) arr.push({ name: neighborhoodName });
     }
   }
 
   const result = {
     country: 'Colombia',
-    departments: Object.values(departments).map(d => ({ name: d.name, cities: Object.values(d.cities) }))
+    departments: Object.values(departments).map((d) => ({
+      name: d.name,
+      cities: Object.values(d.cities),
+    })),
   };
 
   // opcional: guardar el json si se quiere persistir
@@ -90,36 +102,36 @@ async function main() {
   const DANE_DEPARTMENTS = {
     '05': 'ANTIOQUIA',
     '08': 'ATLÁNTICO',
-    '11': 'BOGOTÁ, D.C.',
-    '13': 'BOLÍVAR',
-    '15': 'BOYACÁ',
-    '17': 'CALDAS',
-    '18': 'CAQUETÁ',
-    '19': 'CAUCA',
-    '20': 'CESAR',
-    '23': 'CÓRDOBA',
-    '25': 'CUNDINAMARCA',
-    '27': 'CHOCÓ',
-    '41': 'HUILA',
-    '44': 'LA GUAJIRA',
-    '47': 'MAGDALENA',
-    '50': 'META',
-    '52': 'NARIÑO',
-    '54': 'NORTE DE SANTANDER',
-    '63': 'QUINDÍO',
-    '66': 'RISARALDA',
-    '68': 'SAN ANDRÉS Y PROVIDENCIA',
-    '70': 'SANTANDER',
-    '73': 'SUCRE',
-    '76': 'VALLE DEL CAUCA',
-    '81': 'ARAUCA',
-    '85': 'CASANARE',
-    '86': 'PUTUMAYO',
-    '91': 'AMAZONAS',
-    '94': 'GUAINÍA',
-    '95': 'GUAVIARE',
-    '97': 'VAUPÉS',
-    '99': 'VICHADA'
+    11: 'BOGOTÁ, D.C.',
+    13: 'BOLÍVAR',
+    15: 'BOYACÁ',
+    17: 'CALDAS',
+    18: 'CAQUETÁ',
+    19: 'CAUCA',
+    20: 'CESAR',
+    23: 'CÓRDOBA',
+    25: 'CUNDINAMARCA',
+    27: 'CHOCÓ',
+    41: 'HUILA',
+    44: 'LA GUAJIRA',
+    47: 'MAGDALENA',
+    50: 'META',
+    52: 'NARIÑO',
+    54: 'NORTE DE SANTANDER',
+    63: 'QUINDÍO',
+    66: 'RISARALDA',
+    68: 'SAN ANDRÉS Y PROVIDENCIA',
+    70: 'SANTANDER',
+    73: 'SUCRE',
+    76: 'VALLE DEL CAUCA',
+    81: 'ARAUCA',
+    85: 'CASANARE',
+    86: 'PUTUMAYO',
+    91: 'AMAZONAS',
+    94: 'GUAINÍA',
+    95: 'GUAVIARE',
+    97: 'VAUPÉS',
+    99: 'VICHADA',
   };
 
   for (const dept of data.departments) {
@@ -136,23 +148,33 @@ async function main() {
     }
 
     const deptNameNorm = normalizeName(mappedDeptName);
-    let department = await prisma.department.findFirst({ where: { name: deptNameNorm, countryId: country.id } });
+    let department = await prisma.department.findFirst({
+      where: { name: deptNameNorm, countryId: country.id },
+    });
     if (!department) {
-      department = await prisma.department.create({ data: { name: deptNameNorm, countryId: country.id } });
+      department = await prisma.department.create({
+        data: { name: deptNameNorm, countryId: country.id },
+      });
       createdDepartments++;
     }
 
     for (const city of dept.cities) {
       const cityNameNorm = normalizeName(city.name);
-      let cityDb = await prisma.city.findFirst({ where: { name: cityNameNorm, departmentId: department.id } });
+      let cityDb = await prisma.city.findFirst({
+        where: { name: cityNameNorm, departmentId: department.id },
+      });
       if (!cityDb) {
-        cityDb = await prisma.city.create({ data: { name: cityNameNorm, departmentId: department.id } });
+        cityDb = await prisma.city.create({
+          data: { name: cityNameNorm, departmentId: department.id },
+        });
         createdCities++;
       }
 
       for (const neighborhood of city.neighborhoods) {
         const nbNameNorm = normalizeName(neighborhood.name);
-        let nb = await prisma.neighborhood.findFirst({ where: { name: nbNameNorm, cityId: cityDb.id } });
+        let nb = await prisma.neighborhood.findFirst({
+          where: { name: nbNameNorm, cityId: cityDb.id },
+        });
         if (!nb) {
           await prisma.neighborhood.create({ data: { name: nbNameNorm, cityId: cityDb.id } });
           createdNeighborhoods++;
@@ -162,9 +184,14 @@ async function main() {
   }
 
   console.log('Seed completado.');
-  console.log(`Resumen: Departamentos creados: ${createdDepartments}, Ciudades creadas: ${createdCities}, Barrios creados: ${createdNeighborhoods}`);
+  console.log(
+    `Resumen: Departamentos creados: ${createdDepartments}, Ciudades creadas: ${createdCities}, Barrios creados: ${createdNeighborhoods}`
+  );
 }
 
 main()
-  .catch(e => { console.error(e); process.exit(1); })
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
   .finally(() => prisma.$disconnect());

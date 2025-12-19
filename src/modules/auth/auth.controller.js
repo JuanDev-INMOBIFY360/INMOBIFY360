@@ -1,4 +1,4 @@
-import { loginUser, logoutUser, getProfileService, updateProfileService } from "./auth.service.js";
+import { loginUser, logoutUser, getProfileService, updateProfileService } from './auth.service.js';
 
 export const LoginController = async (req, res) => {
   try {
@@ -14,7 +14,7 @@ export const logoutController = async (req, res) => {
   try {
     const userId = req.user?.id;
     if (!userId) {
-      return res.status(401).json({ message: "Usuario no autenticado" });
+      return res.status(401).json({ message: 'Usuario no autenticado' });
     }
     const result = await logoutUser(userId);
     res.status(200).json(result);
@@ -32,12 +32,11 @@ export const getProfile = async (req, res) => {
   }
 };
 
-
 export const updateProfile = async (req, res) => {
   try {
     const updatedUser = await updateProfileService(req.user.id, req.body);
     res.json({
-      message: "profile updated successfully",
+      message: 'profile updated successfully',
       user: updatedUser,
     });
   } catch (error) {

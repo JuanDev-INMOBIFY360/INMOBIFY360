@@ -4,8 +4,8 @@ import {
   addCountry,
   modifyCountry,
   removeCountry,
-} from "./country.service.js";
-import { validationResult } from "express-validator";
+} from './country.service.js';
+import { validationResult } from 'express-validator';
 
 export const getCountriesController = async (req, res) => {
   try {
@@ -61,9 +61,7 @@ export const deleteCountryController = async (req, res) => {
   }
   try {
     const Removecountry = await removeCountry(req.params.id);
-    res
-      .status(204)
-      .json(Removecountry, { message: "Country deleted successfully" });
+    res.status(204).json(Removecountry, { message: 'Country deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

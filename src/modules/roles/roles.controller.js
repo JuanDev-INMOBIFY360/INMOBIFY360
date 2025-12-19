@@ -1,18 +1,12 @@
-import {
-  fetchAllRoles,
-  fetchRoleById,
-  addRole,
-  modifyRole,
-  removeRole,
-} from "./roles.service.js";
-import { validationResult } from "express-validator";
+import { fetchAllRoles, fetchRoleById, addRole, modifyRole, removeRole } from './roles.service.js';
+import { validationResult } from 'express-validator';
 
 export const getAllRolesController = async (req, res) => {
   try {
     const roles = await fetchAllRoles();
     res.status(200).json(roles);
   } catch (error) {
-    res.status(500).json({ message: "Server Error", error: error.message });
+    res.status(500).json({ message: 'Server Error', error: error.message });
   }
 };
 export const getRoleByIdController = async (req, res) => {

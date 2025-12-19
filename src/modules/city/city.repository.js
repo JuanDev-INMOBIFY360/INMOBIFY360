@@ -1,11 +1,11 @@
-import prisma from "../../config/db.js";
+import prisma from '../../config/db.js';
 
 export const getCities = async () => {
   return await prisma.city.findMany({
     include: {
       department: {
         include: {
-          country: true, 
+          country: true,
         },
       },
       neighborhoods: true,
@@ -20,7 +20,7 @@ export const getCityById = async (id) => {
     include: {
       department: {
         include: {
-          country: true, 
+          country: true,
         },
       },
       neighborhoods: true,

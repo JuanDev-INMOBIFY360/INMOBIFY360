@@ -1,11 +1,5 @@
-import {
-  fetchUsers,
-  fetchUserById,
-  addUser,
-  modifyUser,
-  removeUser,
-} from "./user.service.js";
-import { validationResult } from "express-validator";
+import { fetchUsers, fetchUserById, addUser, modifyUser, removeUser } from './user.service.js';
+import { validationResult } from 'express-validator';
 
 export const getAllUsersController = async (req, res) => {
   try {
@@ -22,7 +16,7 @@ export const getUserByIdController = async (req, res) => {
 
   try {
     const user = await fetchUserById(req.params.id);
-    if (!user) return res.status(404).json({ message: "User not found" });
+    if (!user) return res.status(404).json({ message: 'User not found' });
     res.status(200).json(user);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -59,7 +53,7 @@ export const deleteUserController = async (req, res) => {
 
   try {
     await removeUser(req.params.id);
-    res.status(200).json({ message: "User deleted successfully" });
+    res.status(200).json({ message: 'User deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

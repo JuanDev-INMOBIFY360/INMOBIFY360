@@ -1,4 +1,4 @@
-import prisma from "../../config/db.js";
+import prisma from '../../config/db.js';
 
 export const getNeighborhoods = async () => {
   return await prisma.neighborhood.findMany({
@@ -6,14 +6,14 @@ export const getNeighborhoods = async () => {
       city: {
         include: {
           department: {
-            include: { country: true }
-          }
-        }
+            include: { country: true },
+          },
+        },
       },
-      properties: true
+      properties: true,
     },
   });
-}
+};
 
 export const getNeighborhoodById = async (id) => {
   return await prisma.neighborhood.findUnique({
@@ -22,28 +22,28 @@ export const getNeighborhoodById = async (id) => {
       city: {
         include: {
           department: {
-            include: { country: true }
-          }
-        }
+            include: { country: true },
+          },
+        },
       },
-      properties: true
+      properties: true,
     },
   });
-}
+};
 
 export const createNeighborhood = async (data) => {
   return await prisma.neighborhood.create({
     data: data,
   });
-}
+};
 export const updateNeighborhood = async (id, data) => {
   return await prisma.neighborhood.update({
     where: { id: id },
     data: data,
   });
-}
+};
 export const deleteNeighborhood = async (id) => {
   return await prisma.neighborhood.delete({
     where: { id: id },
   });
-}
+};

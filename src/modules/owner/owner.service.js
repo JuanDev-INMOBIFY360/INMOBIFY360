@@ -1,4 +1,10 @@
-import { getOwners,getOwnerById,createOwner,updateOwner,deleteOwner } from "./owner.repository.js";
+import {
+  getOwners,
+  getOwnerById,
+  createOwner,
+  updateOwner,
+  deleteOwner,
+} from './owner.repository.js';
 
 export const fetchOwners = async () => {
   return await getOwners();

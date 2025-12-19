@@ -4,8 +4,8 @@ import {
   addProperty,
   modifyProperty,
   removeProperty,
-} from "./property.service.js";
-import { validationResult } from "express-validator";
+} from './property.service.js';
+import { validationResult } from 'express-validator';
 import cloudinary from '../../config/cloudinary.js';
 import streamifier from 'streamifier';
 
@@ -34,7 +34,7 @@ export const getPropertyByIdController = async (req, res) => {
 
   try {
     const property = await fetchPropertyById(req.params.id);
-    if (!property) return res.status(404).json({ message: "Property not found" });
+    if (!property) return res.status(404).json({ message: 'Property not found' });
     res.status(200).json(property);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -47,11 +47,11 @@ export const createPropertyController = async (req, res) => {
 
   try {
     const data = { ...req.body };
-    
+
     // Eliminar campos cliente-only/transitorios ANTES de procesar
     const clientOnlyFields = ['primaryImageId', 'uploadedImages', 'deletedImages', 'tempFiles'];
     const stripped = [];
-    clientOnlyFields.forEach(field => {
+    clientOnlyFields.forEach((field) => {
       if (data[field] !== undefined) {
         stripped.push(field);
         delete data[field];
@@ -60,19 +60,34 @@ export const createPropertyController = async (req, res) => {
     if (stripped.length) {
       console.log('createPropertyController - Stripped client-only fields:', stripped.join(', '));
     }
-   
-   // Convertir campos numéricos de string a número
-   const numericFields = ['precio', 'area', 'areaPrivada', 'habitaciones', 'banos', 'parqueaderos', 'estrato', 'piso', 'antiguedad', 'administracion'];
-   numericFields.forEach(field => {
-     if (data[field]) data[field] = parseFloat(data[field]) || null;
-   });
+
+    // Convertir campos numéricos de string a número
+    const numericFields = [
+      'precio',
+      'area',
+      'areaPrivada',
+      'habitaciones',
+      'banos',
+      'parqueaderos',
+      'estrato',
+      'piso',
+      'antiguedad',
+      'administracion',
+    ];
+    numericFields.forEach((field) => {
+      if (data[field]) data[field] = parseFloat(data[field]) || null;
+    });
 
     // Si vienen archivos (multer) en req.files (campo 'imagenes') subirlos a Cloudinary
     if (req.files && req.files.length > 0) {
       const uploads = await Promise.all(
         req.files.map((file) => uploadBufferToCloudinary(file.buffer, 'inmobify360/properties'))
       );
-      const images = uploads.map(u => ({ url: u.secure_url, public_id: u.public_id, resource_type: u.resource_type }));
+      const images = uploads.map((u) => ({
+        url: u.secure_url,
+        public_id: u.public_id,
+        resource_type: u.resource_type,
+      }));
       data.imagenes = images;
     }
 
@@ -92,7 +107,7 @@ export const updatePropertyController = async (req, res) => {
     // Eliminar campos cliente-only/transitorios ANTES de procesar
     const clientOnlyFields = ['primaryImageId', 'uploadedImages', 'deletedImages', 'tempFiles'];
     const stripped = [];
-    clientOnlyFields.forEach(field => {
+    clientOnlyFields.forEach((field) => {
       if (data[field] !== undefined) {
         stripped.push(field);
         delete data[field];
@@ -103,14 +118,33 @@ export const updatePropertyController = async (req, res) => {
     }
 
     // Convertir campos numéricos de string a número
-    const numericFields = ['precio', 'area', 'areaPrivada', 'habitaciones', 'banos', 'parqueaderos', 'estrato', 'piso', 'antiguedad', 'administracion'];
-    numericFields.forEach(field => {
-      if (data[field] !== undefined && data[field] !== null && data[field] !== '') data[field] = parseFloat(data[field]) || null;
+    const numericFields = [
+      'precio',
+      'area',
+      'areaPrivada',
+      'habitaciones',
+      'banos',
+      'parqueaderos',
+      'estrato',
+      'piso',
+      'antiguedad',
+      'administracion',
+    ];
+    numericFields.forEach((field) => {
+      if (data[field] !== undefined && data[field] !== null && data[field] !== '')
+        data[field] = parseFloat(data[field]) || null;
     });
 
     // Convertir campos ID que deben ser enteros
-    const intIdFields = ['ownerId', 'countryId', 'departmentId', 'cityId', 'neighborhoodId', 'typePropertyId'];
-    intIdFields.forEach(field => {
+    const intIdFields = [
+      'ownerId',
+      'countryId',
+      'departmentId',
+      'cityId',
+      'neighborhoodId',
+      'typePropertyId',
+    ];
+    intIdFields.forEach((field) => {
       if (data[field] !== undefined && data[field] !== null && data[field] !== '') {
         const n = Number(data[field]);
         if (!Number.isNaN(n)) data[field] = n;
@@ -119,7 +153,12 @@ export const updatePropertyController = async (req, res) => {
     });
 
     // Normalizar imagenes: si viene como objeto vacío, eliminar para no pasar {} a Prisma
-    if (data.imagenes && typeof data.imagenes === 'object' && !Array.isArray(data.imagenes) && Object.keys(data.imagenes).length === 0) {
+    if (
+      data.imagenes &&
+      typeof data.imagenes === 'object' &&
+      !Array.isArray(data.imagenes) &&
+      Object.keys(data.imagenes).length === 0
+    ) {
       delete data.imagenes;
     }
 
@@ -152,9 +191,15 @@ export const updatePropertyController = async (req, res) => {
     // Si vienen nuevas imágenes, subirlas y agregarlas al array existente
     if (req.files && req.files.length > 0) {
       const uploads = await Promise.all(
-        req.files.map((file) => uploadBufferToCloudinary(file.buffer, `inmobify360/properties/${req.params.id}`))
+        req.files.map((file) =>
+          uploadBufferToCloudinary(file.buffer, `inmobify360/properties/${req.params.id}`)
+        )
       );
-      const images = uploads.map(u => ({ url: u.secure_url, public_id: u.public_id, resource_type: u.resource_type }));
+      const images = uploads.map((u) => ({
+        url: u.secure_url,
+        public_id: u.public_id,
+        resource_type: u.resource_type,
+      }));
 
       // obtener existentes
       const property = await fetchPropertyById(req.params.id);
@@ -182,7 +227,7 @@ export const deletePropertyController = async (req, res) => {
 
   try {
     await removeProperty(req.params.id);
-    res.status(200).json({ message: "Property deleted successfully" });
+    res.status(200).json({ message: 'Property deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

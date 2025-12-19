@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
-describe("Neighborhood CRUD", () => {
+describe('Neighborhood CRUD', () => {
   afterAll(async () => {
     await prisma.$disconnect();
   });
@@ -9,19 +9,19 @@ describe("Neighborhood CRUD", () => {
   let city;
 
   beforeAll(async () => {
-    const country = await prisma.country.create({ data: { name: "Argentina2" } });
+    const country = await prisma.country.create({ data: { name: 'Argentina2' } });
     const dept = await prisma.department.create({
-      data: { name: "Buenos Aires2", countryId: country.id },
+      data: { name: 'Buenos Aires2', countryId: country.id },
     });
     city = await prisma.city.create({
-      data: { name: "Palermo", departmentId: dept.id },
+      data: { name: 'Palermo', departmentId: dept.id },
     });
   });
 
-  it("Crea un barrio", async () => {
+  it('Crea un barrio', async () => {
     const neighborhood = await prisma.neighborhood.create({
-      data: { name: "Las Cañitas", cityId: city.id },
+      data: { name: 'Las Cañitas', cityId: city.id },
     });
-    expect(neighborhood.name).toBe("Las Cañitas");
+    expect(neighborhood.name).toBe('Las Cañitas');
   });
 });

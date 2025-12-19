@@ -1,4 +1,4 @@
-import { getCities,getCityById,createCity,updateCity,deleteCity } from "./city.repository.js";
+import { getCities, getCityById, createCity, updateCity, deleteCity } from './city.repository.js';
 
 export const fetchCities = async () => {
   return await getCities();

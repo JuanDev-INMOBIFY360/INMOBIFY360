@@ -1,4 +1,4 @@
-import prisma from "../../config/db.js";
+import prisma from '../../config/db.js';
 
 export const getProperties = async () => {
   return await prisma.property.findMany({
@@ -84,12 +84,7 @@ export const updateProperty = async (id, data) => {
   }
 
   // Remove client-only or transient fields that are not part of the Prisma model
-  const clientOnlyFields = [
-    'primaryImageId',
-    'uploadedImages',
-    'deletedImages',
-    'tempFiles',
-  ];
+  const clientOnlyFields = ['primaryImageId', 'uploadedImages', 'deletedImages', 'tempFiles'];
   const stripped = [];
   for (const f of clientOnlyFields) {
     if (prismaData[f] !== undefined) {
