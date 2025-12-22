@@ -26,7 +26,11 @@ export const getPrivilegeByIdController = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
   try {
-    const privilege = await fetchPrivilegeById(req.params.id);
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ message: 'ID inválido' });
+    }
+    const privilege = await fetchPrivilegeById(id);
     res.status(200).json(privilege);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -52,7 +56,11 @@ export const updatePrivilegeController = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
   try {
-    const updatedPrivilege = await modifyPrivilege(req.params.id, req.body);
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ message: 'ID inválido' });
+    }
+    const updatedPrivilege = await modifyPrivilege(id, req.body);
     res.status(200).json(updatedPrivilege);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -64,7 +72,11 @@ export const deletePrivilegeController = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
   try {
-    await removePrivilege(req.params.id);
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ message: 'ID inválido' });
+    }
+    await removePrivilege(id);
     res.status(204).send();
   } catch (error) {
     res.status(500).json({ message: error.message });

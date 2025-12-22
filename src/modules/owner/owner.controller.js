@@ -1,3 +1,4 @@
+import { parse } from 'dotenv';
 import {
   fetchOwners,
   fetchOwnerById,
@@ -21,7 +22,11 @@ export const getOwnerByIdController = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
   try {
-    const owner = await fetchOwnerById(req.params.id);
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ message: 'ID inválido' });
+    }
+    const owner = await fetchOwnerById(id);
     res.status(200).json(owner);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -47,7 +52,11 @@ export const updateOwnerController = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
   try {
-    const updatedOwner = await modifyOwner(req.params.id, req.body);
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ message: 'ID inválido' });
+    }
+    const updatedOwner = await modifyOwner(id, req.body);
     res.status(200).json(updatedOwner);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -60,7 +69,11 @@ export const deleteOwnerController = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
   try {
-    const removeowener = await removeOwner(req.params.id);
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ message: 'ID inválido' });
+    }
+    const removeowener = await removeOwner(id);
     res.status(204).json(removeowener, { message: 'Owner deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });

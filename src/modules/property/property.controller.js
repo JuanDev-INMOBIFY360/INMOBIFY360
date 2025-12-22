@@ -33,7 +33,11 @@ export const getPropertyByIdController = async (req, res) => {
   if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
   try {
-    const property = await fetchPropertyById(req.params.id);
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ message: 'ID inválido' });
+    }
+    const property = await fetchPropertyById(id);
     if (!property) return res.status(404).json({ message: 'Property not found' });
     res.status(200).json(property);
   } catch (error) {
@@ -102,6 +106,12 @@ export const updatePropertyController = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
   try {
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ message: 'ID inválido' });
+    }
+    const property = await fetchPropertyById(id);
+    if (!property) return res.status(404).json({ message: 'Property not found' });
     const data = { ...req.body };
 
     // Eliminar campos cliente-only/transitorios ANTES de procesar

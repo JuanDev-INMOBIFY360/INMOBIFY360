@@ -22,7 +22,10 @@ export const getTypePropertyByIdController = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
   try {
-    const { id } = req.params;
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ message: 'ID inválido' });
+    }
     const typeProperty = await fetchTypePropertyById(id);
     res.status(200).json(typeProperty);
   } catch (error) {
@@ -49,7 +52,10 @@ export const updateTypePropertyController = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
   try {
-    const { id } = req.params;
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ message: 'ID inválido' });
+    }
     const data = req.body;
     const updatedTypeProperty = await modifyTypeProperty(id, data);
     res.status(200).json(updatedTypeProperty);
@@ -63,7 +69,10 @@ export const deleteTypePropertyController = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
   try {
-    const { id } = req.params;
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ message: 'ID inválido' });
+    }
     await removeTypeProperty(id);
     res.status(204).send();
   } catch (error) {
