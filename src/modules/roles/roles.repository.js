@@ -3,7 +3,9 @@ import prisma from '../../config/db.js';
 export const getAllRoles = async () => {
   return await prisma.roles.findMany({
     include: {
-      permissions: true,
+      permissions: {
+        include: { privileges: true },
+      },
       users: true,
     },
   });
@@ -12,6 +14,11 @@ export const getAllRoles = async () => {
 export const getRoleById = async (id) => {
   return await prisma.roles.findUnique({
     where: { id: id },
+    include: {
+      permissions: {
+        include: { privileges: true },
+      },
+    },
   });
 };
 
