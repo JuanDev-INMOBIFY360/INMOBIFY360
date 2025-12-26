@@ -13,16 +13,23 @@ export const authorize = (moduleName, action) => {
         return res.status(401).json({ message: 'Usuario no autenticado' });
       }
 
-      // ✅ Cargar solo permisos del módulo actual
+      // ✅ Cargar solo RolePermission para el módulo actual y traer los privilegios asociados
       const user = await prisma.user.findUnique({
         where: { id: userId },
         include: {
           role: {
             include: {
-              permissions: {
-                where: { name: moduleName },
+              rolePermissions: {
+                where: {
+                  permission: { name: moduleName },
+                },
                 include: {
-                  privileges: true,
+                  permission: true,
+                  privileges: {
+                    include: {
+                      privilege: true,
+                    },
+                  },
                 },
               },
             },
@@ -34,15 +41,18 @@ export const authorize = (moduleName, action) => {
         return res.status(403).json({ message: 'No tienes un rol asignado' });
       }
 
-      const permission = user.role.permissions[0]; // solo uno, ya viene filtrado
+      const rolePermission = user.role.rolePermissions[0]; // rolePermission filtrado por módulo
 
-      if (!permission) {
+      if (!rolePermission) {
         return res.status(403).json({
           message: `No tienes permisos para el módulo '${moduleName}'`,
         });
       }
 
-      const hasPrivilege = permission.privileges.some(
+      // Mapear a la forma esperada: array de Privileges (con action)
+      const privileges = (rolePermission.privileges || []).map((rp) => rp.privilege);
+
+      const hasPrivilege = privileges.some(
         (priv) => priv.action.toUpperCase() === action.toUpperCase()
       );
 

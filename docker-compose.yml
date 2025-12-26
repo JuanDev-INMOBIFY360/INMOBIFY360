@@ -9,7 +9,7 @@ services:
       MYSQL_USER: inmobify
       MYSQL_PASSWORD: inmobify123
     ports:
-      - "3306:3306" 
+      - "3306:3306"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
       interval: 10s
@@ -31,13 +31,10 @@ services:
         condition: service_healthy
     volumes:
       - .:/app
-      - /app/node_modules  # ← ESTO PROTEGE node_modules
-      - /app/.prisma       # ← ESTO PROTEGE el cliente generado de Prisma
-    command: >
-      sh -c "npx prisma generate &&
-             npx prisma migrate deploy &&
-             npx prisma db seed || true &&
-             npm run dev"
+      - /app/node_modules
+      - /app/.prisma
+      - /app/prisma
+    command: npm run dev
 
 volumes:
   mysql_data:

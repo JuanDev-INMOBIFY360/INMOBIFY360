@@ -1,6 +1,7 @@
 import { fetchAllRoles, fetchRoleById, addRole, modifyRole, removeRole } from './roles.service.js';
 import { validationResult } from 'express-validator';
 
+
 export const getAllRolesController = async (req, res) => {
   try {
     const roles = await fetchAllRoles();
@@ -28,14 +29,31 @@ export const getRoleByIdController = async (req, res) => {
 
 export const createRoleController = async (req, res) => {
   const errors = validationResult(req);
+
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({
+      message: 'Errores de validación',
+      errors: errors.array(),
+    });
   }
+
   try {
-    const newRole = await addRole(req.body);
-    res.status(201).json(newRole);
+    const role = await addRole(req.body);
+
+    return res.status(201).json({
+      message: 'Rol creado correctamente',
+      data: role,
+    });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error(error);
+
+    if (error.code === 'P2002') {
+      return res.status(409).json({ message: 'Duplicado' });
+    }
+
+    return res.status(400).json({
+      message: error.message,
+    });
   }
 };
 export const updateRoleController = async (req, res) => {

@@ -11,9 +11,14 @@ export const loginUser = async ({ email, password }) => {
     include: {
       role: {
         include: {
-          permissions: {
+          rolePermissions: {
             include: {
-              privileges: true,
+              permission: true,
+              privileges: {
+                include: {
+                  privilege: true,
+                },
+              },
             },
           },
         },
@@ -28,8 +33,20 @@ export const loginUser = async ({ email, password }) => {
     throw new Error('Contraseña incorrecta');
   }
 
-  // Extraer nombres de módulos a los que tiene acceso
-  const modules = user.role?.permissions?.map((p) => p.name) || [];
+  // Extraer nombres de módulos a los que tiene acceso (desde rolePermissions)
+  const modules = user.role?.rolePermissions?.map((rp) => rp.permission.name) || [];
+
+  // Construir permisos con privilegios para incluir en el token
+  const permissions = (user.role?.rolePermissions || []).map((rp) => ({
+    id: rp.permission.id,
+    name: rp.permission.name,
+    displayName: rp.permission.displayName,
+    privileges: (rp.privileges || []).map((p) => ({
+      id: p.privilege.id,
+      action: p.privilege.action,
+      displayName: p.privilege.displayName,
+    })),
+  }));
 
   const token = generateToken({
     id: user.id,
@@ -37,6 +54,7 @@ export const loginUser = async ({ email, password }) => {
     name: user.name,
     role: user.role?.name,
     modules: modules,
+    permissions: permissions,
   });
 
   return {
@@ -75,9 +93,14 @@ export const getProfileService = async (userId) => {
     include: {
       role: {
         include: {
-          permissions: {
+          rolePermissions: {
             include: {
-              privileges: true,
+              permission: true,
+              privileges: {
+                include: {
+                  privilege: true,
+                },
+              },
             },
           },
         },
@@ -87,7 +110,12 @@ export const getProfileService = async (userId) => {
 
   if (!user) throw new Error('Usuario no encontrado');
 
-  const modules = user.role?.permissions?.map((p) => p.name) || [];
+  const modules = user.role?.rolePermissions?.map((rp) => rp.permission.name) || [];
+
+  const permissions = (user.role?.rolePermissions || []).map((rp) => ({
+    ...rp.permission,
+    privileges: (rp.privileges || []).map((p) => p.privilege),
+  }));
 
   return {
     id: user.id,
@@ -96,7 +124,7 @@ export const getProfileService = async (userId) => {
     role: user.role?.name,
     status: user.status,
     modules: modules,
-    permissions: user.role?.permissions || [],
+    permissions: permissions,
   };
 };
 

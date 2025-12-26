@@ -1,7 +1,7 @@
 import {
   getAllRoles,
   getRoleById,
-  createRole,
+  createRoleWithPermissions,
   updateRole,
   deleteRole,
 } from './roles.repository.js';
@@ -13,7 +13,7 @@ export const fetchRoleById = async (id) => {
   return await getRoleById(id);
 };
 export const addRole = async (data) => {
-  return await createRole(data);
+  return await createRoleWithPermissions(data);
 };
 export const modifyRole = async (id, data) => {
   return await updateRole(id, data);

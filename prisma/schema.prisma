@@ -71,12 +71,13 @@ model Neighborhood {
 }
 
 model Roles {
-    id          Int           @id @default(autoincrement())
-    name        String        @unique
-    users       User[]
-    permissions Permissions[]
-    createdAt   DateTime      @default(now())
-    updatedAt   DateTime      @updatedAt
+  id              Int              @id @default(autoincrement())
+  name            String           @unique
+  description     String?
+  users           User[]
+  rolePermissions RolePermission[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
 }
 
 model User {
@@ -92,26 +93,50 @@ model User {
 }
 
 model Permissions {
-    id         Int          @id @default(autoincrement())
-    name       String
-    role       Roles        @relation(fields: [roleId], references: [id])
-    roleId     Int
-    privileges Privileges[]
-    createdAt  DateTime     @default(now())
-    updatedAt  DateTime     @updatedAt
+  id              Int              @id @default(autoincrement())
+  name            String           @unique
+  displayName     String
+  description     String?
+  rolePermissions RolePermission[]
+  privileges      Privileges[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
 
-    @@unique([name, roleId])
+model RolePermission {
+  id           Int         @id @default(autoincrement())
+  roleId       Int
+  permissionId Int
+  role         Roles       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission   Permissions @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+  privileges   RolePermissionPrivilege[]
+  createdAt    DateTime    @default(now())
+
+  @@unique([roleId, permissionId])
 }
 
 model Privileges {
-  id           Int          @id @default(autoincrement())
-  action       PrivilegeAction
-  permissionId Int
-  permission   Permissions  @relation(fields: [permissionId], references: [id])
-  createdAt    DateTime     @default(now())
-  updatedAt    DateTime     @updatedAt
+  id                       Int                       @id @default(autoincrement())
+  action                   PrivilegeAction
+  displayName              String
+  description              String?
+  permissionId             Int
+  permission               Permissions               @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+  rolePermissionPrivileges RolePermissionPrivilege[]
+  createdAt                DateTime                  @default(now())
+  updatedAt                DateTime                  @updatedAt
 
   @@unique([action, permissionId])
+}
+
+model RolePermissionPrivilege {
+  id               Int            @id @default(autoincrement())
+  rolePermissionId Int
+  privilegeId      Int
+  rolePermission   RolePermission @relation(fields: [rolePermissionId], references: [id], onDelete: Cascade)
+  privilege        Privileges     @relation(fields: [privilegeId], references: [id], onDelete: Cascade)
+
+  @@unique([rolePermissionId, privilegeId])
 }
 
 
