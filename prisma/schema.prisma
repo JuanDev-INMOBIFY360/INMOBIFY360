@@ -8,6 +8,10 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
+/* =======================
+   ENUMS
+======================= */
+
 enum PrivilegeAction {
     CREATE
     READ
@@ -20,7 +24,16 @@ enum PropertyState {
     AVAILABLE
     SOLD
     RENTED
+    INACTIVE
 }
+enum OperationType {
+    SALE
+    RENT
+}
+
+/* =======================
+   LOCATION
+======================= */
 
 model Country {
     id          Int          @id @default(autoincrement())
@@ -36,7 +49,6 @@ model Department {
     name       String
     country    Country    @relation(fields: [countryId], references: [id])
     countryId  Int
-    cities     City[]
     properties Property[]
     createdAt  DateTime   @default(now())
     updatedAt  DateTime   @updatedAt
@@ -44,40 +56,18 @@ model Department {
     @@unique([name, countryId])
 }
 
-model City {
-    id            Int            @id @default(autoincrement())
-    name          String
-    
-    department    Department     @relation(fields: [departmentId], references: [id])
-    departmentId  Int
-    neighborhoods Neighborhood[]
-    properties    Property[]
-    createdAt     DateTime       @default(now())
-    updatedAt     DateTime       @updatedAt
-
-    @@unique([name, departmentId])
-}
-
-model Neighborhood {
-    id         Int        @id @default(autoincrement())
-    name       String
-    city       City       @relation(fields: [cityId], references: [id])
-    cityId     Int
-    properties Property[]
-    createdAt  DateTime   @default(now())
-    updatedAt  DateTime   @updatedAt
-
-    @@unique([name, cityId])
-}
+/* =======================
+   AUTH & PERMISSIONS
+======================= */
 
 model Roles {
-  id              Int              @id @default(autoincrement())
-  name            String           @unique
-  description     String?
-  users           User[]
-  rolePermissions RolePermission[]
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
+    id              Int              @id @default(autoincrement())
+    name            String           @unique
+    description     String?
+    users           User[]
+    rolePermissions RolePermission[]
+    createdAt       DateTime         @default(now())
+    updatedAt       DateTime         @updatedAt
 }
 
 model User {
@@ -93,52 +83,55 @@ model User {
 }
 
 model Permissions {
-  id              Int              @id @default(autoincrement())
-  name            String           @unique
-  displayName     String
-  description     String?
-  rolePermissions RolePermission[]
-  privileges      Privileges[]
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
+    id              Int              @id @default(autoincrement())
+    name            String           @unique
+    displayName     String
+    description     String?
+    rolePermissions RolePermission[]
+    privileges      Privileges[]
+    createdAt       DateTime         @default(now())
+    updatedAt       DateTime         @updatedAt
 }
 
 model RolePermission {
-  id           Int         @id @default(autoincrement())
-  roleId       Int
-  permissionId Int
-  role         Roles       @relation(fields: [roleId], references: [id], onDelete: Cascade)
-  permission   Permissions @relation(fields: [permissionId], references: [id], onDelete: Cascade)
-  privileges   RolePermissionPrivilege[]
-  createdAt    DateTime    @default(now())
+    id           Int         @id @default(autoincrement())
+    roleId       Int
+    permissionId Int
+    role         Roles       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+    permission   Permissions @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+    privileges   RolePermissionPrivilege[]
+    createdAt    DateTime    @default(now())
 
-  @@unique([roleId, permissionId])
+    @@unique([roleId, permissionId])
 }
 
 model Privileges {
-  id                       Int                       @id @default(autoincrement())
-  action                   PrivilegeAction
-  displayName              String
-  description              String?
-  permissionId             Int
-  permission               Permissions               @relation(fields: [permissionId], references: [id], onDelete: Cascade)
-  rolePermissionPrivileges RolePermissionPrivilege[]
-  createdAt                DateTime                  @default(now())
-  updatedAt                DateTime                  @updatedAt
+    id                       Int                       @id @default(autoincrement())
+    action                   PrivilegeAction
+    displayName              String
+    description              String?
+    permissionId             Int
+    permission               Permissions               @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+    rolePermissionPrivileges RolePermissionPrivilege[]
+    createdAt                DateTime                  @default(now())
+    updatedAt                DateTime                  @updatedAt
 
-  @@unique([action, permissionId])
+    @@unique([action, permissionId])
 }
 
 model RolePermissionPrivilege {
-  id               Int            @id @default(autoincrement())
-  rolePermissionId Int
-  privilegeId      Int
-  rolePermission   RolePermission @relation(fields: [rolePermissionId], references: [id], onDelete: Cascade)
-  privilege        Privileges     @relation(fields: [privilegeId], references: [id], onDelete: Cascade)
+    id               Int            @id @default(autoincrement())
+    rolePermissionId Int
+    privilegeId      Int
+    rolePermission   RolePermission @relation(fields: [rolePermissionId], references: [id], onDelete: Cascade)
+    privilege        Privileges     @relation(fields: [privilegeId], references: [id], onDelete: Cascade)
 
-  @@unique([rolePermissionId, privilegeId])
+    @@unique([rolePermissionId, privilegeId])
 }
 
+/* =======================
+   REAL ESTATE
+======================= */
 
 model TypeProperty {
     id         Int        @id @default(autoincrement())
@@ -150,44 +143,73 @@ model TypeProperty {
 
 model Property {
     id             Int           @id @default(autoincrement())
-    titulo         String?       // "Apartamento moderno en El Poblado"
-    descripcion    String?       @db.Text // Descripción larga
+
+    // Identificación
+    codigo         String        @unique
+    titulo         String?
+    descripcion    String?       @db.Text
+
+    // Operación
+    operacion      OperationType @default(SALE)
+
+    // Precio
     precio         Float
-    area           Float?
-    areaPrivada    Float?        // Área privada (diferente del área total)
+    moneda         String        @default("COP")
+
+    // Características
     habitaciones   Int?
     banos          Int?
     parqueaderos   Int?
-    estrato        Int?          // Estrato socioeconómico (1-6 en Colombia)
-    piso           Int?          // Número de piso
-    antiguedad     Int?          // Años de antigüedad
-    administracion Float?        // Costo de administración mensual
-    amenidades     Json?         
+
+    // Áreas
+    areaConstruida Float?
+    areaPrivada    Float?
+
+    // Estado físico / comercial
+    estadoFisico   String?       // "Nuevo", "Bueno", "Remodelado"
+
+    // Amenidades / zonas comunes
+    amenidades     Json?
+
+    // 📍 Ubicación
+    ciudad         String
+    barrio         String?
     direccion      String
     latitud        Float?
     longitud       Float?
-    imagenes       Json?         // [{url: "", descripcion: ""}]
-    videoUrl       String?       // URL del video tour
-    tourVirtual    String?       // URL del tour 360°    
-    estado         PropertyState @default(AVAILABLE)
-    destacada      Boolean       @default(false) // Para propiedades destacadas
-    owner          Owner         @relation(fields: [ownerId], references: [id])
-    ownerId        Int
+
+    // 🖼️ Imágenes
+    imagenes       Json?
+
+    // Estado y visibilidad
+    estado           PropertyState @default(AVAILABLE)
+    publicada        Boolean       @default(false)
+    fechaPublicacion DateTime?
+    destacada        Boolean       @default(false)
+
+    // Relaciones
     country        Country       @relation(fields: [countryId], references: [id])
     countryId      Int
+
     department     Department    @relation(fields: [departmentId], references: [id])
     departmentId   Int
-    city           City          @relation(fields: [cityId], references: [id])
-    cityId         Int
-    neighborhood   Neighborhood  @relation(fields: [neighborhoodId], references: [id])
-    neighborhoodId Int
+
+    owner          Owner         @relation(fields: [ownerId], references: [id])
+    ownerId        Int
+
     typeProperty   TypeProperty  @relation(fields: [typePropertyId], references: [id])
     typePropertyId Int
-    
-    // Timestamps
+
     createdAt      DateTime      @default(now())
     updatedAt      DateTime      @updatedAt
+
+    @@index([ciudad])
+    @@index([precio])
+    @@index([habitaciones])
+    @@index([banos])
+    @@index([publicada])
 }
+
 
 model Owner {
     id         Int        @id @default(autoincrement())

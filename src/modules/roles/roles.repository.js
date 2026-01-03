@@ -19,16 +19,23 @@ export const getAllRoles = async () => {
 
 export const getRoleById = async (id) => {
   return await prisma.roles.findUnique({
-    where: { id: id },
+    where: { id },
     include: {
-      permissions: {
-        include: { privileges: true },
+      rolePermissions: {
+        include: {
+          privileges: {
+            include: {
+              privilege: true, 
+            },
+          },
+        },
       },
     },
   });
 };
 
-export const createRoleWithPermissions = async (data) => {
+
+export const createRoleWithPrivileges = async (data) => {
   return await prisma.$transaction(async (tx) => {
     // 1️⃣ Crear rol
     const role = await tx.roles.create({
@@ -38,42 +45,36 @@ export const createRoleWithPermissions = async (data) => {
       },
     });
 
-    // 2️⃣ Asignar permisos y privilegios
-    for (const p of data.permissions) {
-      // Validar permiso existe
-      const permissionExists = await tx.permissions.findUnique({
-        where: { id: p.permissionId },
-      });
+    // 2️⃣ Obtener privilegios válidos con su permiso
+    const privileges = await tx.privileges.findMany({
+      where: { id: { in: data.privileges } },
+      select: { id: true, permissionId: true },
+    });
 
-      if (!permissionExists) {
-        throw new Error(`Permission ${p.permissionId} no existe`);
+    if (privileges.length !== data.privileges.length) {
+      throw new Error('Privilegios inválidos');
+    }
+
+    // 3️⃣ Agrupar por permissionId
+    const byPermission = {};
+    for (const priv of privileges) {
+      if (!byPermission[priv.permissionId]) {
+        byPermission[priv.permissionId] = [];
       }
+      byPermission[priv.permissionId].push(priv.id);
+    }
 
-      // Crear relación rol-permiso
+    // 4️⃣ Crear relaciones
+    for (const [permissionId, privilegeIds] of Object.entries(byPermission)) {
       const rolePermission = await tx.rolePermission.create({
         data: {
           roleId: role.id,
-          permissionId: p.permissionId,
+          permissionId: Number(permissionId),
         },
       });
 
-      // Validar privilegios
-      const validPrivileges = await tx.privileges.findMany({
-        where: {
-          id: { in: p.privileges },
-          permissionId: p.permissionId,
-        },
-      });
-
-      if (validPrivileges.length !== p.privileges.length) {
-        throw new Error(
-          `Privilegios inválidos para permission ${p.permissionId}`
-        );
-      }
-
-      // Crear relación rol-permiso-privilegios
       await tx.rolePermissionPrivilege.createMany({
-        data: p.privileges.map((privilegeId) => ({
+        data: privilegeIds.map((privilegeId) => ({
           rolePermissionId: rolePermission.id,
           privilegeId,
         })),
@@ -84,17 +85,69 @@ export const createRoleWithPermissions = async (data) => {
   });
 };
 
+export const updateRoleWithPrivileges = async (roleId, data) => {
+  return await prisma.$transaction(async (tx) => {
+    // 1️⃣ Actualizar datos básicos
+    const role = await tx.roles.update({
+      where: { id: roleId },
+      data: {
+        name: data.name,
+        description: data.description,
+      },
+    });
 
-export const updateRole = async (id, data) => {
-  return await prisma.roles.update({
-    where: { id },
-    data: {
-      name: data.name,
-      description: data.description,
-    },
+    // 2️⃣ Eliminar relaciones anteriores
+    await tx.rolePermissionPrivilege.deleteMany({
+      where: {
+        rolePermission: {
+          roleId,
+        },
+      },
+    });
+
+    await tx.rolePermission.deleteMany({
+      where: { roleId },
+    });
+
+    // 3️⃣ Obtener privilegios válidos
+    const privileges = await tx.privileges.findMany({
+      where: { id: { in: data.privileges } },
+      select: { id: true, permissionId: true },
+    });
+
+    if (privileges.length !== data.privileges.length) {
+      throw new Error('Privilegios inválidos');
+    }
+
+    // 4️⃣ Agrupar por permissionId
+    const byPermission = {};
+    for (const priv of privileges) {
+      if (!byPermission[priv.permissionId]) {
+        byPermission[priv.permissionId] = [];
+      }
+      byPermission[priv.permissionId].push(priv.id);
+    }
+
+    // 5️⃣ Recrear relaciones
+    for (const [permissionId, privilegeIds] of Object.entries(byPermission)) {
+      const rolePermission = await tx.rolePermission.create({
+        data: {
+          roleId,
+          permissionId: Number(permissionId),
+        },
+      });
+
+      await tx.rolePermissionPrivilege.createMany({
+        data: privilegeIds.map((privilegeId) => ({
+          rolePermissionId: rolePermission.id,
+          privilegeId,
+        })),
+      });
+    }
+
+    return role;
   });
 };
-
 
 export const deleteRole = async (id) => {
   return await prisma.roles.delete({

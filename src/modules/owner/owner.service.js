@@ -5,11 +5,26 @@ import {
   updateOwner,
   deleteOwner,
 } from './owner.repository.js';
+import { getPagination } from '../../utils/pagination.js';
 
-export const fetchOwners = async () => {
-  return await getOwners();
+export const fetchOwners = async (query) => {
+  const { skip, take, page, limit } = getPagination(query);
+
+  const [owners, total] = await Promise.all([
+    getOwners({ skip, take }),
+    getOwners({ count: true }),
+  ]);
+
+  return {
+    data: owners,
+    meta: {
+      total,
+      page,
+      lastPage: Math.ceil(total / limit),
+      limit,
+    },
+  };
 };
-
 export const fetchOwnerById = async (id) => {
   return await getOwnerById(id);
 };

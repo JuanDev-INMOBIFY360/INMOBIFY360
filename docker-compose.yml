@@ -34,7 +34,7 @@ services:
       - /app/node_modules
       - /app/.prisma
       - /app/prisma
-    command: npm run dev
+    command: npm run dev 
 
 volumes:
   mysql_data:

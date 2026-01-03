@@ -1,50 +1,80 @@
-import { PrismaClient } from '@prisma/client';
-import bcrypt from 'bcryptjs';
-
-
+import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
+/* ================================
+   CONFIG
+================================ */
+
+const MODULES = [
+  "property",
+  "user",
+  "owner",
+  "role",
+  "country",
+  "department",
+  "city",
+  "neighborhood",
+  "typeProperty",
+];
+
+const ACTIONS = [
+  { action: "CREATE", displayName: "Crear" },
+  { action: "READ", displayName: "Ver" },
+  { action: "UPDATE", displayName: "Editar" },
+  { action: "DELETE", displayName: "Eliminar" },
+  { action: "CHANGE_STATE", displayName: "Cambiar estado" },
+];
+
+const DEPARTMENTS_COLOMBIA = [
+  "Amazonas","Antioquia","Arauca","Atlántico","Bolívar","Boyacá","Caldas",
+  "Caquetá","Casanare","Cauca","Cesar","Chocó","Córdoba","Cundinamarca",
+  "Guainía","Guaviare","Huila","La Guajira","Magdalena","Meta","Nariño",
+  "Norte de Santander","Putumayo","Quindío","Risaralda",
+  "San Andrés y Providencia","Santander","Sucre","Tolima",
+  "Valle del Cauca","Vaupés","Vichada","Bogotá D.C.",
+];
+
+const TYPE_PROPERTIES = [
+  "Apartamento","Casa","Casa Campestre","Finca","Lote","Oficina",
+  "Consultorio","Local Comercial","Bodega","Edificio","Proyecto",
+];
+
+/* ================================
+   SEED
+================================ */
+
 async function main() {
-  console.log('🌱 Iniciando seed...');
+  console.log("🌱 Iniciando seed completo (RBAC + Locations)...");
 
-
-   // ======================================================
-  // ROLES
-  // ======================================================
+  /* =========================
+     ROLES
+  ========================= */
   const adminRole = await prisma.roles.upsert({
-    where: { name: 'Administrador' },
+    where: { name: "Administrador" },
     update: {},
-    create: { name: 'Administrador' },
+    create: {
+      name: "Administrador",
+      description: "Rol administrador del sistema",
+    },
   });
 
   await prisma.roles.upsert({
-    where: { name: 'Usuario' },
+    where: { name: "Usuario" },
     update: {},
-    create: { name: 'Usuario' },
+    create: {
+      name: "Usuario",
+      description: "Rol usuario estándar",
+    },
   });
 
-  // ======================================================
-  // PERMISSIONS (CATÁLOGO GLOBAL)
-  // ======================================================
-  const modules = [
-    'property',
-    'user',
-    'owner',
-    'role',
-    'country',
-    'city',
-    'department',
-    'neighborhood',
-    'typeProperty',
-    'permissions',
-    'privileges',
-    'auth',
-  ];
-
+  /* =========================
+     PERMISSIONS
+  ========================= */
   const permissionsMap = {};
 
-  for (const module of modules) {
+  for (const module of MODULES) {
     permissionsMap[module] = await prisma.permissions.upsert({
       where: { name: module },
       update: {},
@@ -55,41 +85,31 @@ async function main() {
     });
   }
 
-  // ======================================================
-  // PRIVILEGES (CATÁLOGO GLOBAL POR PERMISO)
-  // ======================================================
-  const actions = ['CREATE', 'READ', 'UPDATE', 'DELETE', 'CHANGE_STATE'];
-
-  const actionLabelMap = {
-    CREATE: 'Crear',
-    READ: 'Ver',
-    UPDATE: 'Editar',
-    DELETE: 'Eliminar',
-    CHANGE_STATE: 'Cambiar estado',
-  };
-
+  /* =========================
+     PRIVILEGES
+  ========================= */
   for (const permission of Object.values(permissionsMap)) {
-    for (const action of actions) {
+    for (const act of ACTIONS) {
       await prisma.privileges.upsert({
         where: {
           action_permissionId: {
-            action,
+            action: act.action,
             permissionId: permission.id,
           },
         },
         update: {},
         create: {
-          action,
-          displayName: actionLabelMap[action],
+          action: act.action,
+          displayName: act.displayName,
           permissionId: permission.id,
         },
       });
     }
   }
 
-  // ======================================================
-  // ASIGNAR TODOS LOS PERMISOS AL ROL ADMIN
-  // ======================================================
+  /* =========================
+     ASSIGN ADMIN PRIVILEGES
+  ========================= */
   for (const permission of Object.values(permissionsMap)) {
     const rolePermission = await prisma.rolePermission.upsert({
       where: {
@@ -126,15 +146,17 @@ async function main() {
     }
   }
 
-  // ======================================================
-  // USUARIO ADMIN
-  // ======================================================
+  /* =========================
+     ADMIN USER
+  ========================= */
   if (!process.env.USER_ADMIN || !process.env.USER_ADMIN_PASSWORD) {
-    throw new Error('❌ USER_ADMIN o USER_ADMIN_PASSWORD no definidos');
+    throw new Error("❌ USER_ADMIN o USER_ADMIN_PASSWORD no definidos");
   }
 
-  const saltRounds = Number(process.env.HASHED_PASSWORD_SALT_ROUNDS) || 10;
-  const password = await bcrypt.hash(process.env.USER_ADMIN_PASSWORD, saltRounds);
+  const password = await bcrypt.hash(
+    process.env.USER_ADMIN_PASSWORD,
+    Number(process.env.HASHED_PASSWORD_SALT_ROUNDS) || 10
+  );
 
   await prisma.user.upsert({
     where: { email: process.env.USER_ADMIN },
@@ -145,19 +167,63 @@ async function main() {
     create: {
       email: process.env.USER_ADMIN,
       password,
-      name: 'Admin',
+      name: "Admin",
       roleId: adminRole.id,
     },
   });
 
+  /* =========================
+     COUNTRY
+  ========================= */
+  console.log("🌍 Creando país Colombia");
 
-  
-  console.log('✅ Seed RBAC ejecutado correctamente');
+  const colombia = await prisma.country.upsert({
+    where: { name: "Colombia" },
+    update: {},
+    create: { name: "Colombia" },
+  });
+
+  console.log("🇨🇴 Colombia ID:", colombia.id);
+
+  /* =========================
+     DEPARTMENTS
+  ========================= */
+  for (const name of DEPARTMENTS_COLOMBIA) {
+    await prisma.department.upsert({
+      where: {
+        name_countryId: {
+          name,
+          countryId: colombia.id,
+        },
+      },
+      update: {},
+      create: {
+        name,
+        countryId: colombia.id,
+      },
+    });
+  }
+
+  console.log("🏛️ Departamentos creados");
+
+  /* =========================
+     TYPE PROPERTY
+  ========================= */
+  for (const name of TYPE_PROPERTIES) {
+    await prisma.typeProperty.upsert({
+      where: { name },
+      update: {},
+      create: { name },
+    });
+  }
+
+  console.log("🏠 Tipos de propiedad creados");
+  console.log("✅ Seed completo ejecutado correctamente");
 }
 
 main()
   .catch((e) => {
-    console.error('❌ Error ejecutando seed:', e);
+    console.error("❌ Error en seed:", e);
     process.exit(1);
   })
   .finally(async () => {

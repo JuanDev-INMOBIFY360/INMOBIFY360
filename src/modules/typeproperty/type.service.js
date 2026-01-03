@@ -5,9 +5,25 @@ import {
   updateTypeProperty,
   deleteTypeProperty,
 } from './type.repository.js';
+import { getPagination } from '../../utils/pagination.js';
 
-export const fetchTypeProperties = async () => {
-  return await getTypeProperties();
+export const fetchTypeProperties = async (query) => {
+  const { skip, take, page, limit } = getPagination(query);
+
+  const [typeProperties, total] = await Promise.all([
+    getTypeProperties({ skip, take }),
+    getTypeProperties({ count: true }),
+  ]);
+
+  return {
+    data: typeProperties,
+    meta: {
+      total,
+      page,
+      lastPage: Math.ceil(total / limit),
+      limit,
+    },
+  };
 };
 
 export const fetchTypePropertyById = async (id) => {
