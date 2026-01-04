@@ -17,7 +17,23 @@ const MODULES = [
   "city",
   "neighborhood",
   "typeProperty",
+  "nearbyPlace",
+  "commonArea",
 ];
+const COMMON_AREAS = [
+  "Piscina",
+  "Gimnasio",
+  "Parqueadero",
+  "Ascensor",
+  "Zona BBQ",
+  "Salón Social",
+  "Cancha Deportiva",
+  "Zona Infantil",
+  "Portería",
+  "Vigilancia 24/7",
+];
+
+
 
 const ACTIONS = [
   { action: "CREATE", displayName: "Crear" },
@@ -216,6 +232,23 @@ async function main() {
       create: { name },
     });
   }
+
+  /* =========================
+   COMMON AREAS
+========================= */
+for (const name of COMMON_AREAS) {
+  await prisma.commonArea.upsert({
+    where: { name },
+    update: {},
+    create: { name },
+  });
+}
+
+
+console.log("📍 Lugares cercanos creados");
+
+console.log("🏊 Zonas comunes creadas");
+
 
   console.log("🏠 Tipos de propiedad creados");
   console.log("✅ Seed completo ejecutado correctamente");

@@ -1,34 +1,48 @@
 generator client {
-    provider      = "prisma-client-js"
-    binaryTargets = ["native", "debian-openssl-3.0.x", "debian-openssl-1.1.x", "windows"]
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x", "debian-openssl-1.1.x", "windows"]
 }
 
 datasource db {
-    provider = "mysql"
-    url      = env("DATABASE_URL")
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 /* =======================
    ENUMS
 ======================= */
 
-enum PrivilegeAction {
-    CREATE
-    READ
-    UPDATE
-    DELETE
-    CHANGE_STATE
+enum NearbyPlaceType {
+  METRO
+  METROPLUS
+  SUPERMARKET
+  HOSPITAL
+  CLINIC
+  SCHOOL
+  UNIVERSITY
+  PARK
+  MALL
+  GYM
+  CHURCH
+  POLICE
+  PHARMACY
+  BANK
+  RESTAURANT
+  BAR
+  OTHER
 }
 
-enum PropertyState {
-    AVAILABLE
-    SOLD
-    RENTED
-    INACTIVE
+enum PrivilegeAction {
+  CREATE
+  READ
+  UPDATE
+  DELETE
+  CHANGE_STATE
 }
+
 enum OperationType {
-    SALE
-    RENT
+  SALE
+  RENT
 }
 
 /* =======================
@@ -36,24 +50,24 @@ enum OperationType {
 ======================= */
 
 model Country {
-    id          Int          @id @default(autoincrement())
-    name        String       @unique
-    departments Department[]
-    properties  Property[]
-    createdAt   DateTime     @default(now())
-    updatedAt   DateTime     @updatedAt
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  departments Department[]
+  properties  Property[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 }
 
 model Department {
-    id         Int        @id @default(autoincrement())
-    name       String
-    country    Country    @relation(fields: [countryId], references: [id])
-    countryId  Int
-    properties Property[]
-    createdAt  DateTime   @default(now())
-    updatedAt  DateTime   @updatedAt
+  id         Int        @id @default(autoincrement())
+  name       String
+  country    Country    @relation(fields: [countryId], references: [id])
+  countryId  Int
+  properties Property[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
 
-    @@unique([name, countryId])
+  @@unique([name, countryId])
 }
 
 /* =======================
@@ -61,72 +75,72 @@ model Department {
 ======================= */
 
 model Roles {
-    id              Int              @id @default(autoincrement())
-    name            String           @unique
-    description     String?
-    users           User[]
-    rolePermissions RolePermission[]
-    createdAt       DateTime         @default(now())
-    updatedAt       DateTime         @updatedAt
+  id              Int              @id @default(autoincrement())
+  name            String           @unique
+  description     String?
+  users           User[]
+  rolePermissions RolePermission[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
 }
 
 model User {
-    id        Int      @id @default(autoincrement())
-    email     String   @unique
-    password  String
-    name      String
-    role      Roles?   @relation(fields: [roleId], references: [id])
-    roleId    Int?
-    status    Boolean  @default(true)
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  role      Roles?   @relation(fields: [roleId], references: [id])
+  roleId    Int?
+  status    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Permissions {
-    id              Int              @id @default(autoincrement())
-    name            String           @unique
-    displayName     String
-    description     String?
-    rolePermissions RolePermission[]
-    privileges      Privileges[]
-    createdAt       DateTime         @default(now())
-    updatedAt       DateTime         @updatedAt
+  id              Int              @id @default(autoincrement())
+  name            String           @unique
+  displayName     String
+  description     String?
+  rolePermissions RolePermission[]
+  privileges      Privileges[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
 }
 
 model RolePermission {
-    id           Int         @id @default(autoincrement())
-    roleId       Int
-    permissionId Int
-    role         Roles       @relation(fields: [roleId], references: [id], onDelete: Cascade)
-    permission   Permissions @relation(fields: [permissionId], references: [id], onDelete: Cascade)
-    privileges   RolePermissionPrivilege[]
-    createdAt    DateTime    @default(now())
+  id           Int                       @id @default(autoincrement())
+  roleId       Int
+  permissionId Int
+  role         Roles                     @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission   Permissions               @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+  privileges   RolePermissionPrivilege[]
+  createdAt    DateTime                  @default(now())
 
-    @@unique([roleId, permissionId])
+  @@unique([roleId, permissionId])
 }
 
 model Privileges {
-    id                       Int                       @id @default(autoincrement())
-    action                   PrivilegeAction
-    displayName              String
-    description              String?
-    permissionId             Int
-    permission               Permissions               @relation(fields: [permissionId], references: [id], onDelete: Cascade)
-    rolePermissionPrivileges RolePermissionPrivilege[]
-    createdAt                DateTime                  @default(now())
-    updatedAt                DateTime                  @updatedAt
+  id                       Int                       @id @default(autoincrement())
+  action                   PrivilegeAction
+  displayName              String
+  description              String?
+  permissionId             Int
+  permission               Permissions               @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+  rolePermissionPrivileges RolePermissionPrivilege[]
+  createdAt                DateTime                  @default(now())
+  updatedAt                DateTime                  @updatedAt
 
-    @@unique([action, permissionId])
+  @@unique([action, permissionId])
 }
 
 model RolePermissionPrivilege {
-    id               Int            @id @default(autoincrement())
-    rolePermissionId Int
-    privilegeId      Int
-    rolePermission   RolePermission @relation(fields: [rolePermissionId], references: [id], onDelete: Cascade)
-    privilege        Privileges     @relation(fields: [privilegeId], references: [id], onDelete: Cascade)
+  id               Int            @id @default(autoincrement())
+  rolePermissionId Int
+  privilegeId      Int
+  rolePermission   RolePermission @relation(fields: [rolePermissionId], references: [id], onDelete: Cascade)
+  privilege        Privileges     @relation(fields: [privilegeId], references: [id], onDelete: Cascade)
 
-    @@unique([rolePermissionId, privilegeId])
+  @@unique([rolePermissionId, privilegeId])
 }
 
 /* =======================
@@ -134,90 +148,117 @@ model RolePermissionPrivilege {
 ======================= */
 
 model TypeProperty {
-    id         Int        @id @default(autoincrement())
-    name       String     @unique
-    properties Property[]
-    createdAt  DateTime   @default(now())
-    updatedAt  DateTime   @updatedAt
+  id         Int        @id @default(autoincrement())
+  name       String     @unique
+  properties Property[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
 }
 
 model Property {
-    id             Int           @id @default(autoincrement())
+  id             Int           @id @default(autoincrement())
+  codigo         String        @unique
+  titulo         String
+  descripcion    String?       @db.Text
+  operacion      OperationType @default(SALE)
+  precio         Float
+  moneda         String        @default("COP")
+  habitaciones   Int?
+  banos          Int?
+  parqueaderos   Int?
+  areaConstruida Float?
+  ciudad         String
+  barrio         String?
+  direccion      String
 
-    // Identificación
-    codigo         String        @unique
-    titulo         String?
-    descripcion    String?       @db.Text
+  country        Country       @relation(fields: [countryId], references: [id])
+  countryId      Int
+  department     Department    @relation(fields: [departmentId], references: [id])
+  departmentId   Int
+  owner          Owner         @relation(fields: [ownerId], references: [id])
+  ownerId        Int
+  typeProperty   TypeProperty  @relation(fields: [typePropertyId], references: [id])
+  typePropertyId Int
 
-    // Operación
-    operacion      OperationType @default(SALE)
+  commonAreas    PropertyCommonArea[]
+  properties PropertyNearbyPlace[]
+  images         PropertyImage[]
 
-    // Precio
-    precio         Float
-    moneda         String        @default("COP")
-
-    // Características
-    habitaciones   Int?
-    banos          Int?
-    parqueaderos   Int?
-
-    // Áreas
-    areaConstruida Float?
-    areaPrivada    Float?
-
-    // Estado físico / comercial
-    estadoFisico   String?       // "Nuevo", "Bueno", "Remodelado"
-
-    // Amenidades / zonas comunes
-    amenidades     Json?
-
-    // 📍 Ubicación
-    ciudad         String
-    barrio         String?
-    direccion      String
-    latitud        Float?
-    longitud       Float?
-
-    // 🖼️ Imágenes
-    imagenes       Json?
-
-    // Estado y visibilidad
-    estado           PropertyState @default(AVAILABLE)
-    publicada        Boolean       @default(false)
-    fechaPublicacion DateTime?
-    destacada        Boolean       @default(false)
-
-    // Relaciones
-    country        Country       @relation(fields: [countryId], references: [id])
-    countryId      Int
-
-    department     Department    @relation(fields: [departmentId], references: [id])
-    departmentId   Int
-
-    owner          Owner         @relation(fields: [ownerId], references: [id])
-    ownerId        Int
-
-    typeProperty   TypeProperty  @relation(fields: [typePropertyId], references: [id])
-    typePropertyId Int
-
-    createdAt      DateTime      @default(now())
-    updatedAt      DateTime      @updatedAt
-
-    @@index([ciudad])
-    @@index([precio])
-    @@index([habitaciones])
-    @@index([banos])
-    @@index([publicada])
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
 }
 
+model PropertyImage {
+  id         Int      @id @default(autoincrement())
+  propertyId Int
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  url        String   @db.Text
+  publicId   String
+  isPrimary  Boolean  @default(false)
+  order      Int      @default(0)
+  createdAt  DateTime @default(now())
+
+  @@index([propertyId])
+  @@index([isPrimary])
+}
 
 model Owner {
-    id         Int        @id @default(autoincrement())
-    name       String
-    email      String     @unique
-    phone      String?
-    document   String?    @unique
-    properties Property[]
-    createdAt  DateTime   @default(now())
-    updatedAt  DateTime   @updatedAt
+  id         Int        @id @default(autoincrement())
+  name       String
+  email      String     @unique
+  phone      String?
+  document   String?    @unique
+  properties Property[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
+
+/* =======================
+   COMMON AREAS
+======================= */
+
+model CommonArea {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  properties PropertyCommonArea[]
+}
+
+model PropertyCommonArea {
+  id           Int @id @default(autoincrement())
+  propertyId   Int
+  commonAreaId Int
+
+  property   Property   @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  commonArea CommonArea @relation(fields: [commonAreaId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, commonAreaId])
+}
+
+/* =======================
+   NEARBY PLACES
+======================= */
+
+model NearbyPlace {
+  id        Int              @id @default(autoincrement())
+  name      String
+  type      NearbyPlaceType
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  properties PropertyNearbyPlace[]
+}
+
+model PropertyNearbyPlace {
+  id            Int @id @default(autoincrement())
+  propertyId    Int
+  nearbyPlaceId Int
+  distance      Int?
+
+  property    Property    @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  nearbyPlace NearbyPlace @relation(fields: [nearbyPlaceId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, nearbyPlaceId])
 }
