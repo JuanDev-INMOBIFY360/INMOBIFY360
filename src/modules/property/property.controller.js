@@ -37,7 +37,9 @@ export const getPropertyByIdController = async (req, res) => {
       return res.status(400).json({ message: 'ID inválido' });
     }
 
-    const property = await fetchPropertyById(id);
+    // Detectar si es ruta pública (/public/:id) o protegida (/:id)
+    const isPublic = req.baseUrl.includes('/public');
+    const property = await fetchPropertyById(id, isPublic);
     res.status(200).json(property);
   } catch (error) {
     if (error.message === 'Propiedad no encontrada') {

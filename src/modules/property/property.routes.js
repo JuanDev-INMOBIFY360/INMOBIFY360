@@ -23,7 +23,15 @@ import {
 
 const router = Router();
 
-// Rutas CRUD básicas
+// 🟢 RUTAS PÚBLICAS (Sin autenticación)
+// Obtener todas las propiedades publicadas (para landing page)
+router.get('/public/list', getAllPropertiesController);
+
+// Obtener una propiedad por ID (para ver detalles)
+router.get('/public/:id', getPropertyByIdValidator, getPropertyByIdController);
+
+// 🔐 RUTAS PROTEGIDAS (Con autenticación)
+// Rutas CRUD básicas (solo para usuarios autenticados)
 router.get(
   '/',
   authMiddleware,

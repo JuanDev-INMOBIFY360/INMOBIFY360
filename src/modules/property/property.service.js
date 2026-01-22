@@ -13,6 +13,7 @@ import {
 import { uploadImage, deleteImage, deleteImages } from '../../config/cloudinary.js';
 import { getPagination } from '../../utils/pagination.js';
 import { generatePropertyCode } from '../../utils/propertyCode.js';
+import prisma from '../../config/db.js';
 /**
  * Obtener todas las propiedades con paginación
  */
@@ -50,13 +51,19 @@ export const fetchProperties = async (query) => {
 };
 
 /**
- * Obtener una propiedad por ID
+ * Obtener una propiedad por ID (pública - solo si está publicada)
  */
-export const fetchPropertyById = async (id) => {
+export const fetchPropertyById = async (id, isPublic = true) => {
   const property = await getPropertyById(id);
   if (!property) {
     throw new Error('Propiedad no encontrada');
   }
+  
+  // Si es ruta pública, verificar que esté publicada
+  if (isPublic && !property.publicada) {
+    throw new Error('Propiedad no encontrada');
+  }
+  
   return property;
 };
 
@@ -64,6 +71,7 @@ export const fetchPropertyById = async (id) => {
  * Crear una nueva propiedad
  */
 export const addProperty = async (data) => {
+  const codigo = await generatePropertyCode(prisma);
   let uploadedImages = [];
 
   if (data.images?.length) {
@@ -83,6 +91,7 @@ export const addProperty = async (data) => {
   try {
     return await createProperty({
       ...data,
+      codigo,               // 👈 una sola vez
       images: uploadedImages,
     });
   } catch (error) {
@@ -92,12 +101,11 @@ export const addProperty = async (data) => {
     throw error;
   }
 };
-
 /**
  * Actualizar una propiedad
  */
 export const modifyProperty = async (id, data) => {
-  const { commonAreaIds, codigo, ...propertyData } = data;
+  const { commonAreaIds, codigo, countryId, departmentId, ownerId, typePropertyId, nearbyPlaces, existingImages, newImages, ...propertyData } = data;
 
   const existingProperty = await getPropertyById(id);
   if (!existingProperty) {
@@ -109,11 +117,77 @@ export const modifyProperty = async (id, data) => {
     throw new Error('El código de la propiedad no se puede modificar');
   }
 
+  // Transformar IDs a relaciones anidadas
+  const updateData = {
+    ...propertyData,
+    ...(countryId && { country: { connect: { id: countryId } } }),
+    ...(departmentId && { department: { connect: { id: departmentId } } }),
+    ...(ownerId && { owner: { connect: { id: ownerId } } }),
+    ...(typePropertyId && { typeProperty: { connect: { id: typePropertyId } } }),
+  };
+
+  // Procesar imágenes nuevas si existen
+  let uploadedNewImages = [];
+  if (Array.isArray(newImages) && newImages.length > 0) {
+    uploadedNewImages = await Promise.all(
+      newImages.map(async (img, index) => {
+        const { url, publicId } = await uploadImage(img.base64, 'properties');
+        return {
+          url,
+          publicId,
+          isPrimary: img.isPrimary || false,
+          order: img.order !== undefined ? img.order : index,
+        };
+      })
+    );
+  }
+
   return await prisma.$transaction(async (tx) => {
     const updatedProperty = await tx.property.update({
       where: { id },
-      data: propertyData,
+      data: updateData,
     });
+
+    // 🖼️ Manejar imágenes
+    if (Array.isArray(existingImages) || Array.isArray(newImages)) {
+      // Obtener imágenes actuales
+      const currentImages = await tx.propertyImage.findMany({
+        where: { propertyId: id },
+      });
+
+      // Identificar imágenes a eliminar
+      const existingImageIds = existingImages?.map(img => img.id) || [];
+      const imagesToDelete = currentImages.filter(img => !existingImageIds.includes(img.id));
+
+      // Eliminar imágenes de Cloudinary y BD
+      for (const img of imagesToDelete) {
+        await deleteImage(img.publicId).catch(console.error);
+        await tx.propertyImage.delete({ where: { id: img.id } });
+      }
+
+      // Actualizar orden e isPrimary de imágenes existentes
+      if (Array.isArray(existingImages)) {
+        for (const img of existingImages) {
+          await tx.propertyImage.update({
+            where: { id: img.id },
+            data: {
+              isPrimary: img.isPrimary || false,
+              order: img.order ?? 0,
+            },
+          });
+        }
+      }
+
+      // Agregar nuevas imágenes
+      if (uploadedNewImages.length > 0) {
+        await tx.propertyImage.createMany({
+          data: uploadedNewImages.map(img => ({
+            propertyId: id,
+            ...img,
+          })),
+        });
+      }
+    }
 
     // 🔄 Sincronizar zonas comunes
     if (Array.isArray(commonAreaIds)) {
@@ -126,6 +200,23 @@ export const modifyProperty = async (id, data) => {
           data: commonAreaIds.map((areaId) => ({
             propertyId: id,
             commonAreaId: areaId,
+          })),
+        });
+      }
+    }
+
+    // 🔄 Sincronizar lugares cercanos
+    if (Array.isArray(nearbyPlaces)) {
+      await tx.propertyNearbyPlace.deleteMany({
+        where: { propertyId: id },
+      });
+
+      if (nearbyPlaces.length > 0) {
+        await tx.propertyNearbyPlace.createMany({
+          data: nearbyPlaces.map((np) => ({
+            propertyId: id,
+            nearbyPlaceId: np.nearbyPlaceId || np.id,
+            distance: np.distance,
           })),
         });
       }
