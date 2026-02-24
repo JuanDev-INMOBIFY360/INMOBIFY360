@@ -10,11 +10,9 @@ import { authorize } from '../../middleware/authorize.middleware.js';
 import { authMiddleware } from '../../middleware/auth.middleware.js';
 
 const router = Router();
-router.get('/', authMiddleware, authorize('typeProperty', 'READ'), getTypePropertiesController);
+router.get('/', getTypePropertiesController);
 router.get(
   '/:id',
-  authMiddleware,
-  authorize('typeProperty', 'READ'),
   getTypePropertyByIdController
 );
 router.post('/', authMiddleware, authorize('typeProperty', 'CREATE'), createTypePropertyController);
