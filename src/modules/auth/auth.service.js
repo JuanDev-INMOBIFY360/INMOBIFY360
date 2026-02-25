@@ -25,9 +25,6 @@ export const loginUser = async ({ email, password }) => {
       },
     },
   });
-console.log("Password recibida:", password);
-console.log("Hash en BD:", user.password);
-console.log("Hash length:", user.password.length);
 
   if (!user) {
     throw new Error('Usuario no encontrado');
