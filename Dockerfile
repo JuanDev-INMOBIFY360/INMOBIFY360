@@ -24,4 +24,4 @@ COPY . .
 EXPOSE 5000
 
 # El comando se sobrescribirá en docker-compose.yml
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start"]
