@@ -29,10 +29,8 @@ class App {
     this.app.use(express.json({ limit: '50mb' }));
     this.app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-    // Logger
     this.app.use(morgan('dev'));
 
-    // CORS configurado
     const corsOptions = {
       origin: process.env.CORS_ORIGIN,
       credentials: true,
