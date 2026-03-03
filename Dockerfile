@@ -23,5 +23,4 @@ COPY . .
 # Exponer puerto
 EXPOSE 5000
 
-# El comando se sobrescribirá en docker-compose.yml
-CMD ["npm", "start"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npx prisma db seed && npm start"]
